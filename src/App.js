@@ -1,14 +1,14 @@
-import Navbar from "./components/Navbar";
+import { Router } from "@reach/router";
+import EmployeeContainer from "./components/EmployeeContainer";
+import ManagerContainer from "./components/ManagerContainer";
 
 function App() {
   return (
     <div>
-      <Navbar />
-      <main className="grid place-items-center">
-        <div className="w-full lg:w-2/3 3xl:w-1/3 px-10 lg:px-0">
-          Hello world
-        </div>
-      </main>
+      <Router>
+        <ManagerContainer path="/manager" />
+        <EmployeeContainer path="/employee" />
+      </Router>
     </div>
   );
 }
