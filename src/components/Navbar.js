@@ -5,7 +5,7 @@ import { EnvelopeIcon } from "@heroicons/react/24/outline";
 
 export default function Navbar() {
   return (
-    <div className="bg-fedex-purple h-[75px] grid place-items-center">
+    <nav className="bg-fedex-purple h-[75px] grid place-items-center">
       <div className="h-full w-full lg:w-2/3 3xl:w-1/3 px-10 lg:px-0 self-center">
         <div className="h-full flex items-center">
           <div>
@@ -26,6 +26,6 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-    </div>
+    </nav>
   );
 }
