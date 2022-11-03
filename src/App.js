@@ -5,9 +5,7 @@ function App() {
     <div>
       <Navbar />
       <div className="grid place-items-center">
-        <div className="h-full min-h-screen w-full lg:w-2/3 3xl:w-1/3">
-          Hello world
-        </div>
+        <div className="w-full lg:w-2/3 3xl:w-1/3">Hello world</div>
       </div>
     </div>
   );
