@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../resources/logo.png";
-import thomas from "../resources/person-square.jpg";
+import thomas from "../resources/thomas.jpg";
 import { EnvelopeIcon } from "@heroicons/react/24/outline";
 
 export default function Navbar() {
