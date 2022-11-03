@@ -12,6 +12,9 @@ module.exports = {
         "fedex-grey": "#F2F2F2",
         "fedex-header-black": "#1E1E1E",
       },
+      screens: {
+        "3xl": "2750px",
+      },
     },
   },
   plugins: [],
