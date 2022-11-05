@@ -11,7 +11,7 @@ export default function OpportunityCard(props) {
         {props.opportunity.workersClaimed.length === 0 && (
           <div className="text-sm text-fedex-red font-bold flex items-center space-x-1 mb-2">
             <div>
-              <ExclamationCircleIcon className="h-5 stroke-2" />
+              <ExclamationCircleIcon className="h-6 stroke-2" />
             </div>
             <div className="">UNCLAIMED</div>
           </div>
