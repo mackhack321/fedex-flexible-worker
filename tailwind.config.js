@@ -11,6 +11,7 @@ module.exports = {
         "fedex-placeholder": "#333333",
         "fedex-grey": "#F2F2F2",
         "fedex-header-black": "#1E1E1E",
+        "fedex-lightblue": "#5EB4DF",
       },
       screens: {
         "3xl": "2750px",

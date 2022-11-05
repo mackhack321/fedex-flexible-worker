@@ -24,7 +24,7 @@ const opportunities = [
     supervisor: "Janet Overman",
   },
   {
-    id: 1,
+    id: 2,
     title: "Driver",
     description:
       "Drivers to deliver packages, handle transport, and other necessary functions.",
@@ -49,4 +49,35 @@ const opportunities = [
   },
 ];
 
-export { opportunities };
+const repeatDayButtons = [
+  {
+    label: "S",
+    value: "Sunday",
+  },
+  {
+    label: "M",
+    value: "Monday",
+  },
+  {
+    label: "T",
+    value: "Tuesday",
+  },
+  {
+    label: "W",
+    value: "Wednesday",
+  },
+  {
+    label: "R",
+    value: "Thursday",
+  },
+  {
+    label: "F",
+    value: "Friday",
+  },
+  {
+    label: "S",
+    value: "Saturday",
+  },
+];
+
+export { opportunities, repeatDayButtons };
