@@ -49,4 +49,35 @@ const opportunities = [
   },
 ];
 
-export { opportunities };
+const repeatDayButtons = [
+  {
+    label: "S",
+    value: "Sunday",
+  },
+  {
+    label: "M",
+    value: "Monday",
+  },
+  {
+    label: "T",
+    value: "Tuesday",
+  },
+  {
+    label: "W",
+    value: "Wednesday",
+  },
+  {
+    label: "R",
+    value: "Thursday",
+  },
+  {
+    label: "F",
+    value: "Friday",
+  },
+  {
+    label: "S",
+    value: "Saturday",
+  },
+];
+
+export { opportunities, repeatDayButtons };

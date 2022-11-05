@@ -3,6 +3,7 @@ import EmployeeContainer from "./components/EmployeeContainer";
 import ManagerContainer from "./components/ManagerContainer";
 import Dashboard from "./components/Manager/Dashboard";
 import Launcher from "./components/Launcher";
+import Create from "./components/Manager/Create";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Route index element={<Launcher />} />
           <Route path="manager" element={<ManagerContainer />}>
             <Route index element={<Dashboard />} />
+            <Route path="create" element={<Create />} />
           </Route>
           <Route path="employee" element={<EmployeeContainer />} />
         </Routes>

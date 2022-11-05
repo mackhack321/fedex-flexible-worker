@@ -3,6 +3,7 @@ import React from "react";
 import { opportunities } from "../../resources/data";
 import OpportunityCard from "./OpportunityCard";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Dashboard() {
   const [searchText, setSearchText] = useState("");
@@ -18,8 +19,14 @@ export default function Dashboard() {
       <h1 className="text-center font-light text-2xl sm:text-4xl py-5">
         Opportunities Dashboard
       </h1>
-      <div className="grid place-items-center mb-9">
-        <div className="bg-fedex-grey rounded-md p-1 px-3 flex space-x-3">
+      <div className="flex flex-col md:flex-row mb-9 justify-center space-x-3">
+        <Link
+          to="create"
+          className="bg-fedex-orange w-fit font-bold text-white rounded-md px-2 py-1 text-center"
+        >
+          CREATE
+        </Link>
+        <div className="rounded-md bg-fedex-grey py-1 px-3 flex space-x-3">
           <div>
             <MagnifyingGlassIcon className="h-[24px] stroke-2" />
           </div>
