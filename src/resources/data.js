@@ -24,7 +24,7 @@ const opportunities = [
     supervisor: "Janet Overman",
   },
   {
-    id: 1,
+    id: 2,
     title: "Driver",
     description:
       "Drivers to deliver packages, handle transport, and other necessary functions.",

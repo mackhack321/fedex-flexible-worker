@@ -36,7 +36,7 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 place-items-center">
         {getMatchingOpportunities().map((opportunity) => {
           return (
-            <div>
+            <div key={opportunity.id}>
               <OpportunityCard opportunity={opportunity} />
             </div>
           );
