@@ -51,7 +51,7 @@ export default function Dashboard() {
         >
           CREATE
         </Link>
-        <div className="flex space-x-3 rounded-md bg-fedex-grey py-1 px-3">
+        <div className="flex rounded-md bg-fedex-grey py-1 pl-3">
           <div>
             <MagnifyingGlassIcon className="h-[24px] stroke-2" />
           </div>
@@ -63,7 +63,7 @@ export default function Dashboard() {
             name="search"
             id="search"
             onChange={(e) => setSearchText(e.target.value)}
-            className="w-56 bg-fedex-grey px-2 placeholder:font-bold placeholder:text-fedex-placeholder"
+            className="w-full bg-fedex-grey px-2 placeholder:overflow-visible placeholder:font-bold placeholder:text-fedex-placeholder"
             placeholder="Search for an opportunity"
           />
         </div>
