@@ -2,7 +2,8 @@ import React from "react";
 import { employeeProfile, managerProfile } from "../resources/data";
 import employeePfp from "../resources/bill-pfp.jpg";
 import managerPfp from "../resources/thomas-pfp.jpg";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { ChevronRightIcon } from "@heroicons/react/24/outline";
 
 export default function Profile() {
   const location = useLocation();
@@ -67,7 +68,15 @@ export default function Profile() {
             </div>
           </div>
         </div>
-        <div>baz</div>
+        <div>
+          <Link to="claimed">
+            <div className="flex text-fedex-blue">
+              <div className="text-lg">SEE CLAIMED OPPORTUNITIES</div>
+              <ChevronRightIcon className="w-[24px] stroke-2" />
+            </div>
+          </Link>
+          <div>previous work</div>
+        </div>
       </div>
     </div>
   );
