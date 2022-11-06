@@ -1,14 +1,16 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   certifications,
   repeatDayButtons,
   trainings,
 } from "../../resources/data";
 import { MultiSelect } from "react-multi-select-component";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { opportunities } from "../../resources/data";
+import moment from "moment";
 
-export default function Create() {
+export default function OpportunityEdit() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
@@ -20,8 +22,10 @@ export default function Create() {
   const [repeatDays, setRepeatDays] = useState([]);
   const [selectedTraining, setSelectedTraining] = useState([]);
   const [selectedCertifications, setSelectedCertifications] = useState([]);
+  const [opportunity, setOpportunity] = useState({});
 
   const navigate = useNavigate();
+  const { id } = useParams();
 
   function handleRepeatDayClick(value) {
     if (!repeatDays.includes(value)) {
@@ -38,24 +42,40 @@ export default function Create() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    const payload = {
-      title: title,
-      description: description,
-      location: location,
-      date: date,
-      startTime: startTime,
-      endTime: endTime,
-      amtWorkersNeeded: amtWorkersNeeded,
-      supervisor: supervisor,
-    };
-
-    navigate("/manager", { state: { newOpportunity: true, payload: payload } });
+    navigate("/manager", { state: { editedOpportunity: true } });
   }
+
+  useEffect(() => {
+    const match = opportunities.find((op) => {
+      return op.id === parseInt(id);
+    });
+
+    setOpportunity(match);
+    setTitle(match.title);
+    setDescription(match.description);
+    setLocation(match.location);
+    setDate(match.date);
+    setStartTime(match.startTime);
+    setEndTime(match.endTime);
+    setAmtWorkersNeeded(match.numWorkersNeeded);
+    setSupervisor(match.supervisor);
+    setRepeatDays(match.repeat);
+    setSelectedTraining(
+      trainings.filter((training) =>
+        match.requiredTraining.includes(training.label)
+      )
+    );
+    setSelectedCertifications(
+      certifications.filter((certification) =>
+        match.requiredCertifications.includes(certification.label)
+      )
+    );
+  }, [id]);
 
   return (
     <div>
       <h1 className="py-5 text-center text-4xl font-light">
-        Create an Opportunity
+        Editing "{opportunity.title}"
       </h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-5 grid grid-cols-1 gap-5 md:mb-0 md:grid-cols-2 md:gap-24">
@@ -69,6 +89,7 @@ export default function Create() {
                 type="text"
                 name="title"
                 id="title"
+                value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 className="w-full rounded-md bg-fedex-grey px-2 py-1 placeholder:text-sm placeholder:font-bold placeholder:text-fedex-placeholder"
                 placeholder="Enter a title for the opportunity"
@@ -82,6 +103,7 @@ export default function Create() {
                 required
                 name="description"
                 id="description"
+                value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 className="h-44 w-full rounded-md bg-fedex-grey px-2 py-1 placeholder:py-1 placeholder:text-sm placeholder:font-bold placeholder:text-fedex-placeholder"
                 placeholder="Enter a description for the opportunity"
@@ -96,6 +118,7 @@ export default function Create() {
                 type="text"
                 name="location"
                 id="location"
+                value={location}
                 onChange={(e) => setLocation(e.target.value)}
                 className="w-full rounded-md bg-fedex-grey px-2 py-1 placeholder:text-sm placeholder:font-bold placeholder:text-fedex-placeholder"
                 placeholder="Enter the opportunity's location"
@@ -110,6 +133,7 @@ export default function Create() {
                 type="date"
                 name="date"
                 id="date"
+                value={new Date(date).toLocaleDateString("en-ca")}
                 onChange={(e) => setDate(e.target.value)}
                 min={new Date().toLocaleDateString("en-ca")}
                 className="w-full rounded-md bg-fedex-grey px-2 py-1"
@@ -147,6 +171,7 @@ export default function Create() {
                   type="time"
                   name="start-time"
                   id="start-time"
+                  value={moment(startTime, ["h:ma"]).format("HH:mm")}
                   onChange={(e) => setStartTime(e.target.value)}
                   className="w-full rounded-md bg-fedex-grey px-2 py-1"
                 />
@@ -160,6 +185,7 @@ export default function Create() {
                   type="time"
                   name="end-time"
                   id="end-time"
+                  value={moment(endTime, ["h:ma"]).format("HH:mm")}
                   onChange={(e) => setEndTime(e.target.value)}
                   className="w-full rounded-md bg-fedex-grey px-2 py-1"
                 />
@@ -205,6 +231,7 @@ export default function Create() {
                 id="workers-needed"
                 onChange={(e) => setAmtWorkersNeeded(e.target.value)}
                 min={1}
+                value={amtWorkersNeeded}
                 className="w-full rounded-md bg-fedex-grey px-2 py-1 placeholder:text-sm placeholder:font-bold placeholder:text-fedex-placeholder"
                 placeholder="Leave blank for no limit"
               />
@@ -218,6 +245,7 @@ export default function Create() {
                 type="text"
                 name="supervisor"
                 id="supervisor"
+                value={supervisor}
                 onChange={(e) => setSupervisor(e.target.value)}
                 className="w-full rounded-md bg-fedex-grey px-2 py-1 placeholder:text-sm placeholder:font-bold placeholder:text-fedex-placeholder"
                 placeholder="Enter the opportunity's supervisor"
@@ -225,7 +253,7 @@ export default function Create() {
             </div>
             <div className="flex justify-end space-x-6">
               <Link
-                to="/manager"
+                to={`/manager/opportunity/${id}`}
                 className="w-[100px] rounded-md border-2 border-fedex-orange px-2 py-1 text-center font-bold text-fedex-orange"
               >
                 CANCEL
@@ -234,7 +262,7 @@ export default function Create() {
                 type="submit"
                 className="w-[100px] rounded-md border-2 border-fedex-orange bg-fedex-orange px-2 py-1 text-center font-bold text-white"
               >
-                PUBLISH
+                SAVE
               </button>
             </div>
           </div>

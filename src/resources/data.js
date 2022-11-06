@@ -49,6 +49,20 @@ const opportunities = [
   },
 ];
 
+const trainings = [
+  { label: "Road Safety", value: "road_safety" },
+  { label: "Driver's Education", value: "drivers_education" },
+  { label: "Hazardous Material Transportation", value: "hazmat" },
+  { label: "Emergency Procedures", value: "emergency_procedures" },
+  { label: "Ramp Logistics", value: "ramp_logistics" },
+  { label: "Freight Handling", value: "freight_handling" },
+];
+
+const certifications = [
+  { label: "Commercial Driver's License (CDL)", value: "cdl" },
+  { label: "Freight Logistics Certificate", value: "freight_logistics" },
+];
+
 const repeatDayButtons = [
   {
     label: "S",
@@ -80,4 +94,4 @@ const repeatDayButtons = [
   },
 ];
 
-export { opportunities, repeatDayButtons };
+export { opportunities, repeatDayButtons, trainings, certifications };

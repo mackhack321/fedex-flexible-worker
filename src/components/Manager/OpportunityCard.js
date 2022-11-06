@@ -1,15 +1,16 @@
 import React from "react";
 import { ExclamationCircleIcon } from "@heroicons/react/24/outline";
+import { Link } from "react-router-dom";
 
 export default function OpportunityCard(props) {
   return (
-    <div className="bg-fedex-grey rounded-md p-5 w-fit">
+    <div className="w-fit rounded-md bg-fedex-grey p-5">
       <div className="flex justify-between">
-        <div className="font-light text-3xl mb-2">
+        <div className="mb-2 text-3xl font-light">
           {props.opportunity.title}
         </div>
         {props.opportunity.workersClaimed.length === 0 && (
-          <div className="text-sm text-fedex-red font-bold flex items-center space-x-1 mb-2">
+          <div className="mb-2 flex items-center space-x-1 text-sm font-bold text-fedex-red">
             <div>
               <ExclamationCircleIcon className="h-6 stroke-2" />
             </div>
@@ -17,7 +18,7 @@ export default function OpportunityCard(props) {
           </div>
         )}
       </div>
-      <div className="flex mb-4 flex-col md:flex-row space-y-2 md:space-y-0">
+      <div className="mb-4 flex flex-col space-y-2 md:flex-row md:space-y-0">
         <div className="md:w-60">{props.opportunity.description}</div>
         <div className="flex flex-col lg:mr-16">
           <div>{props.opportunity.date}</div>
@@ -32,7 +33,12 @@ export default function OpportunityCard(props) {
           Claimed: {props.opportunity.workersClaimed.length} out of{" "}
           {props.opportunity.numWorkersNeeded}
         </div>
-        <div className="text-fedex-blue">DETAILS</div>
+        <Link
+          to={`opportunity/${props.opportunity.id}`}
+          className="text-fedex-blue"
+        >
+          DETAILS
+        </Link>
       </div>
     </div>
   );

@@ -4,6 +4,8 @@ import ManagerContainer from "./components/ManagerContainer";
 import Dashboard from "./components/Manager/Dashboard";
 import Launcher from "./components/Launcher";
 import Create from "./components/Manager/Create";
+import OpportunityDetails from "./components/Manager/OpportunityDetails";
+import OpportunityEdit from "./components/Manager/OpportunityEdit";
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
           <Route path="manager" element={<ManagerContainer />}>
             <Route index element={<Dashboard />} />
             <Route path="create" element={<Create />} />
+            <Route path="opportunity/:id" element={<OpportunityDetails />} />
+            <Route path="opportunity/:id/edit" element={<OpportunityEdit />} />
           </Route>
           <Route path="employee" element={<EmployeeContainer />} />
         </Routes>
