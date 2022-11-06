@@ -14,40 +14,23 @@ export default function Dashboard() {
 
   const location = useLocation();
 
+  function showConfirmation(setter) {
+    setter(true);
+    const timer = setTimeout(() => {
+      setter(false);
+      window.history.replaceState({}, document.title);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }
+
   useEffect(() => {
-    const { newOpportunity } = location.state ?? false;
-    const { editedOpportunity } = location.state ?? false;
-    const { unpublishedOpportunity } = location.state ?? false;
+    const { newOpportunity, editedOpportunity, unpublishedOpportunity } =
+      location.state ?? false;
 
-    if (newOpportunity) {
-      setShowCreateConfirmation(true);
-      const timer = setTimeout(() => {
-        setShowCreateConfirmation(false);
-        window.history.replaceState({}, document.title);
-      }, 5000);
-
-      return () => clearTimeout(timer);
-    }
-
-    if (editedOpportunity) {
-      setShowEditConfirmation(true);
-      const timer = setTimeout(() => {
-        setShowEditConfirmation(false);
-        window.history.replaceState({}, document.title);
-      }, 5000);
-
-      return () => clearTimeout(timer);
-    }
-
-    if (unpublishedOpportunity) {
-      setShowUnpublishConfirmation(true);
-      const timer = setTimeout(() => {
-        setShowUnpublishConfirmation(false);
-        window.history.replaceState({}, document.title);
-      }, 5000);
-
-      return () => clearTimeout(timer);
-    }
+    newOpportunity && showConfirmation(setShowCreateConfirmation);
+    editedOpportunity && showConfirmation(setShowEditConfirmation);
+    unpublishedOpportunity && showConfirmation(setShowUnpublishConfirmation);
   }, [location.state]);
 
   function getMatchingOpportunities() {
