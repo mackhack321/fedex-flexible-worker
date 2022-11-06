@@ -6,11 +6,13 @@ import Launcher from "./components/Launcher";
 import Create from "./components/Manager/Create";
 import OpportunityDetails from "./components/Manager/OpportunityDetails";
 import OpportunityEdit from "./components/Manager/OpportunityEdit";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
     <div>
       <Router>
+        <ScrollToTop />
         <Routes>
           <Route index element={<Launcher />} />
           <Route path="manager" element={<ManagerContainer />}>
