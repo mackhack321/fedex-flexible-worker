@@ -17,7 +17,9 @@ export default function Navbar(props) {
             Hello, {props.name}
           </div>
           <div>
-            <EnvelopeIcon className="mr-5 h-[24px] w-[24px] stroke-2 text-white" />
+            <Link to="messages">
+              <EnvelopeIcon className="mr-5 h-[24px] w-[24px] stroke-2 text-white" />
+            </Link>
           </div>
           <div>
             <img

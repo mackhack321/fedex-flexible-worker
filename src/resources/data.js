@@ -63,6 +63,17 @@ const certifications = [
   { label: "Freight Logistics Certificate", value: "freight_logistics" },
 ];
 
+const employeeMessages = [
+  {
+    id: 1,
+    from: "Sue Allen",
+    date: "10/19/2022",
+    teaser: "ALERT: Claimed opportunity details updated",
+  },
+];
+
+const managerMessages = [];
+
 const repeatDayButtons = [
   {
     label: "S",
@@ -94,4 +105,11 @@ const repeatDayButtons = [
   },
 ];
 
-export { opportunities, repeatDayButtons, trainings, certifications };
+export {
+  opportunities,
+  repeatDayButtons,
+  trainings,
+  certifications,
+  employeeMessages,
+  managerMessages,
+};

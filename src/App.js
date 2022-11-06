@@ -10,6 +10,7 @@ import { default as EmployeeOpportunityDetails } from "./components/Employee/Opp
 import OpportunityEdit from "./components/Manager/OpportunityEdit";
 import ScrollToTop from "./components/ScrollToTop";
 import ClaimConfirm from "./components/Employee/ClaimConfirm";
+import Messages from "./components/Messages";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
               element={<ManagerOpportunityDetails />}
             />
             <Route path="opportunity/:id/edit" element={<OpportunityEdit />} />
+            <Route path="messages" element={<Messages />} />
           </Route>
           {/*  =================
                 EMPLOYEE ROUTES
@@ -40,6 +42,7 @@ function App() {
               element={<EmployeeOpportunityDetails />}
             />
             <Route path="opportunity/:id/claim" element={<ClaimConfirm />} />
+            <Route path="messages" element={<Messages />} />
           </Route>
         </Routes>
       </Router>
