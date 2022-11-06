@@ -61,6 +61,7 @@ export default function Messages() {
           )
         )}
       </div>
+      <div className="text-center font-bold">End of messages</div>
     </div>
   );
 }
