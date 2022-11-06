@@ -9,12 +9,15 @@ export default function Dashboard() {
   const [searchText, setSearchText] = useState("");
   const [showCreateConfirmation, setShowCreateConfirmation] = useState(false);
   const [showEditConfirmation, setShowEditConfirmation] = useState(false);
+  const [showUnpublishConfirmation, setShowUnpublishConfirmation] =
+    useState(false);
 
   const location = useLocation();
 
   useEffect(() => {
     const { newOpportunity } = location.state ?? false;
     const { editedOpportunity } = location.state ?? false;
+    const { unpublishedOpportunity } = location.state ?? false;
 
     if (newOpportunity) {
       setShowCreateConfirmation(true);
@@ -30,6 +33,16 @@ export default function Dashboard() {
       setShowEditConfirmation(true);
       const timer = setTimeout(() => {
         setShowEditConfirmation(false);
+        window.history.replaceState({}, document.title);
+      }, 5000);
+
+      return () => clearTimeout(timer);
+    }
+
+    if (unpublishedOpportunity) {
+      setShowUnpublishConfirmation(true);
+      const timer = setTimeout(() => {
+        setShowUnpublishConfirmation(false);
         window.history.replaceState({}, document.title);
       }, 5000);
 
@@ -82,6 +95,12 @@ export default function Dashboard() {
         <div className="flex justify-center space-x-3 text-fedex-green">
           <CheckIcon className="w-[30px]" />
           <div className="text-xl">Opportunity saved</div>
+        </div>
+      )}
+      {showUnpublishConfirmation && (
+        <div className="flex justify-center space-x-3 text-fedex-green">
+          <CheckIcon className="w-[30px]" />
+          <div className="text-xl">Opportunity unpublished</div>
         </div>
       )}
       <div className="mt-9 mb-5 grid grid-cols-1 place-items-center gap-5 md:grid-cols-2">

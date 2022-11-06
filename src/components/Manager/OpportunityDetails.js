@@ -84,12 +84,13 @@ export default function OpportunityDetails() {
             >
               EDIT
             </Link>
-            <button
-              type="submit"
+            <Link
+              to="/manager"
+              state={{ unpublishedOpportunity: true }}
               className="w-[110px] rounded-md border-2 border-fedex-red bg-fedex-red px-2 py-1 text-center font-bold text-white"
             >
               UNPUBLISH
-            </button>
+            </Link>
           </div>
         </div>
       </div>
