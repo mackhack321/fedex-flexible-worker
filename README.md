@@ -4,7 +4,7 @@ CSE 4663 Human Computer Interaction
 
 MSU Fall 2022
 
-### Production build to be hosted at [fedex.mackstanley.com](https://fedex.mackstanley.com) when it's ready. Until then...
+## Production build hosted at [fedex.mackstanley.com](https://fedex.mackstanley.com)
 
 ## Development setup
 

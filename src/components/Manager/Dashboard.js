@@ -9,32 +9,28 @@ export default function Dashboard() {
   const [searchText, setSearchText] = useState("");
   const [showCreateConfirmation, setShowCreateConfirmation] = useState(false);
   const [showEditConfirmation, setShowEditConfirmation] = useState(false);
+  const [showUnpublishConfirmation, setShowUnpublishConfirmation] =
+    useState(false);
 
   const location = useLocation();
 
+  function showConfirmation(setter) {
+    setter(true);
+    const timer = setTimeout(() => {
+      setter(false);
+      window.history.replaceState({}, document.title);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }
+
   useEffect(() => {
-    const { newOpportunity } = location.state ?? false;
-    const { editedOpportunity } = location.state ?? false;
+    const { newOpportunity, editedOpportunity, unpublishedOpportunity } =
+      location.state ?? false;
 
-    if (newOpportunity) {
-      setShowCreateConfirmation(true);
-      const timer = setTimeout(() => {
-        setShowCreateConfirmation(false);
-        window.history.replaceState({}, document.title);
-      }, 5000);
-
-      return () => clearTimeout(timer);
-    }
-
-    if (editedOpportunity) {
-      setShowEditConfirmation(true);
-      const timer = setTimeout(() => {
-        setShowEditConfirmation(false);
-        window.history.replaceState({}, document.title);
-      }, 5000);
-
-      return () => clearTimeout(timer);
-    }
+    newOpportunity && showConfirmation(setShowCreateConfirmation);
+    editedOpportunity && showConfirmation(setShowEditConfirmation);
+    unpublishedOpportunity && showConfirmation(setShowUnpublishConfirmation);
   }, [location.state]);
 
   function getMatchingOpportunities() {
@@ -51,15 +47,15 @@ export default function Dashboard() {
       <div className="mb-5 flex flex-col justify-center space-y-5 md:flex-row md:space-y-0 md:space-x-3">
         <Link
           to="create"
-          className="w-fit rounded-md bg-fedex-orange px-2 py-1 text-center font-bold text-white"
+          className="mx-auto w-fit rounded-md bg-fedex-orange py-2 px-4 text-center font-bold text-white md:mx-0 md:px-2 md:py-1"
         >
           CREATE
         </Link>
-        <div className="flex space-x-3 rounded-md bg-fedex-grey py-1 px-3">
+        <div className="flex rounded-md bg-fedex-grey py-1 pl-3">
           <div>
             <MagnifyingGlassIcon className="h-[24px] stroke-2" />
           </div>
-          <label htmlFor="search" className="hidden">
+          <label htmlFor="search" className="sr-only">
             Search for an opportunity
           </label>
           <input
@@ -67,7 +63,7 @@ export default function Dashboard() {
             name="search"
             id="search"
             onChange={(e) => setSearchText(e.target.value)}
-            className="w-56 bg-fedex-grey px-2 placeholder:font-bold placeholder:text-fedex-placeholder"
+            className="w-full bg-fedex-grey px-2 placeholder:overflow-visible placeholder:font-bold placeholder:text-fedex-placeholder"
             placeholder="Search for an opportunity"
           />
         </div>
@@ -82,6 +78,12 @@ export default function Dashboard() {
         <div className="flex justify-center space-x-3 text-fedex-green">
           <CheckIcon className="w-[30px]" />
           <div className="text-xl">Opportunity saved</div>
+        </div>
+      )}
+      {showUnpublishConfirmation && (
+        <div className="flex justify-center space-x-3 text-fedex-green">
+          <CheckIcon className="w-[30px]" />
+          <div className="text-xl">Opportunity unpublished</div>
         </div>
       )}
       <div className="mt-9 mb-5 grid grid-cols-1 place-items-center gap-5 md:grid-cols-2">

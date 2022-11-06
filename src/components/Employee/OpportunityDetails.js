@@ -19,7 +19,7 @@ export default function OpportunityDetails() {
   return (
     <div>
       <div className="relative flex flex-row justify-center py-5">
-        <Link to="/manager" className="hidden md:block">
+        <Link to="/employee" className="hidden md:block">
           <div className="absolute left-0 text-xl text-fedex-blue">
             <div className="flex flex-row space-x-2">
               <ChevronLeftIcon className="w-[22px] stroke-2" />
@@ -77,19 +77,12 @@ export default function OpportunityDetails() {
           <div className="mb-5">
             <div className="text-2xl">Supervisor: {opportunity.supervisor}</div>
           </div>
-          <div className="flex justify-end space-x-6">
+          <div className="flex justify-end">
             <Link
-              to="edit"
-              className="w-[110px] rounded-md border-2 border-fedex-orange px-2 py-1 text-center font-bold text-fedex-orange"
+              to="claim"
+              className="w-[110px] rounded-md border-2 border-fedex-orange bg-fedex-orange px-2 py-1 text-center font-bold text-white"
             >
-              EDIT
-            </Link>
-            <Link
-              to="/manager"
-              state={{ unpublishedOpportunity: true }}
-              className="w-[110px] rounded-md border-2 border-fedex-red bg-fedex-red px-2 py-1 text-center font-bold text-white"
-            >
-              UNPUBLISH
+              CLAIM
             </Link>
           </div>
         </div>

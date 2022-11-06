@@ -17,14 +17,21 @@ export default function Navbar(props) {
             Hello, {props.name}
           </div>
           <div>
-            <EnvelopeIcon className="mr-5 h-[24px] w-[24px] stroke-2 text-white" />
+            <Link to="messages">
+              <EnvelopeIcon
+                aria-label="Messages"
+                className="mr-5 h-[24px] w-[24px] stroke-2 text-white"
+              />
+            </Link>
           </div>
           <div>
-            <img
-              src={props.pfp}
-              alt={props.name}
-              className="h-[50px] w-[50px] rounded-full"
-            />
+            <Link to="profile">
+              <img
+                src={props.pfp}
+                alt={`${props.name} profile`}
+                className="h-[50px] w-[50px] rounded-full"
+              />
+            </Link>
           </div>
         </div>
       </div>

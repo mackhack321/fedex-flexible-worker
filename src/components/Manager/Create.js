@@ -58,7 +58,7 @@ export default function Create() {
         Create an Opportunity
       </h1>
       <form onSubmit={handleSubmit}>
-        <div className="mb-5 grid grid-cols-1 gap-5 md:mb-0 md:grid-cols-2 md:gap-24">
+        <div className="mb-5 grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-24">
           <div className="flex flex-col space-y-5">
             <div className="flex flex-col space-y-2">
               <label htmlFor="title" className="text-xl">
@@ -137,8 +137,8 @@ export default function Create() {
                 ))}
               </div>
             </div>
-            <div className="flex space-x-5">
-              <div className="flex flex-col space-y-2">
+            <div className="flex justify-between space-x-5">
+              <div className="flex w-full flex-col space-y-2">
                 <label htmlFor="start-time" className="text-xl">
                   Start Time
                 </label>
@@ -151,7 +151,7 @@ export default function Create() {
                   className="w-full rounded-md bg-fedex-grey px-2 py-1"
                 />
               </div>
-              <div className="flex flex-col space-y-2">
+              <div className="flex w-full flex-col space-y-2">
                 <label htmlFor="end-time" className="text-xl">
                   End Time
                 </label>

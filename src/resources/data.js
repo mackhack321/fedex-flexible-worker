@@ -63,6 +63,44 @@ const certifications = [
   { label: "Freight Logistics Certificate", value: "freight_logistics" },
 ];
 
+const employeeMessages = [
+  {
+    id: 1,
+    from: "Sue Allen",
+    date: "10/19/2022",
+    teaser: "ALERT: Claimed opportunity details updated",
+  },
+];
+
+const managerMessages = [];
+
+const employeeProfile = {
+  firstname: "Bill",
+  lastname: "Snyder",
+  dob: "4/1/1960",
+  email: "bill@fedex.com",
+  phone: "(524) 555-3421",
+  location: "Tupelo, MS",
+  punctuality: "100%",
+  attendance: "97.5%",
+  completedTraining: [
+    "Road Safety",
+    "Driver's Education",
+    "Operations",
+    "Fleet Maintenance",
+    "Freight Handling",
+  ],
+  certifications: [
+    "Class A License",
+    "Commercial Driver's License (CDL) ",
+    "OSHA Safety Certificate",
+    "Operator Certification",
+    "Certified Logistics Associate",
+  ],
+};
+
+const managerProfile = {};
+
 const repeatDayButtons = [
   {
     label: "S",
@@ -94,4 +132,13 @@ const repeatDayButtons = [
   },
 ];
 
-export { opportunities, repeatDayButtons, trainings, certifications };
+export {
+  opportunities,
+  repeatDayButtons,
+  trainings,
+  certifications,
+  employeeMessages,
+  managerMessages,
+  employeeProfile,
+  managerProfile,
+};
