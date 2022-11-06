@@ -1,10 +1,12 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import EmployeeContainer from "./components/EmployeeContainer";
 import ManagerContainer from "./components/ManagerContainer";
-import Dashboard from "./components/Manager/Dashboard";
+import { default as ManagerDashboard } from "./components/Manager/Dashboard";
+import { default as EmployeeDashboard } from "./components/Employee/Dashboard";
 import Launcher from "./components/Launcher";
 import Create from "./components/Manager/Create";
-import OpportunityDetails from "./components/Manager/OpportunityDetails";
+import { default as ManagerOpportunityDetails } from "./components/Manager/OpportunityDetails";
+import { default as EmployeeOpportunityDetails } from "./components/Employee/OpportunityDetails";
 import OpportunityEdit from "./components/Manager/OpportunityEdit";
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -15,13 +17,28 @@ function App() {
         <ScrollToTop />
         <Routes>
           <Route index element={<Launcher />} />
+          {/*  ================
+                MANAGER ROUTES
+               ================*/}
           <Route path="manager" element={<ManagerContainer />}>
-            <Route index element={<Dashboard />} />
+            <Route index element={<ManagerDashboard />} />
             <Route path="create" element={<Create />} />
-            <Route path="opportunity/:id" element={<OpportunityDetails />} />
+            <Route
+              path="opportunity/:id"
+              element={<ManagerOpportunityDetails />}
+            />
             <Route path="opportunity/:id/edit" element={<OpportunityEdit />} />
           </Route>
-          <Route path="employee" element={<EmployeeContainer />} />
+          {/*  =================
+                EMPLOYEE ROUTES
+               =================*/}
+          <Route path="employee" element={<EmployeeContainer />}>
+            <Route index element={<EmployeeDashboard />} />
+            <Route
+              path="opportunity/:id"
+              element={<EmployeeOpportunityDetails />}
+            />
+          </Route>
         </Routes>
       </Router>
     </div>
