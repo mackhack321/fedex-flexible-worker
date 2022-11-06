@@ -4,17 +4,17 @@ import { Link } from "react-router-dom";
 export default function Launcher() {
   return (
     <div>
-      <h1 className="text-2xl font-bold text-center py-5">
+      <h1 className="py-5 text-center text-2xl font-bold">
         FedEx Flexible Worker
       </h1>
-      <div className="flex space-x-10 justify-center">
+      <div className="flex justify-center space-x-10">
         <Link to="manager">
-          <div className="bg-fedex-orange text-white w-fit rounded-md p-2 font-bold">
+          <div className="w-fit rounded-md bg-fedex-orange p-2 font-bold text-white">
             Manager view
           </div>
         </Link>
         <Link to="employee">
-          <div className="bg-fedex-orange text-white w-fit rounded-md p-2 font-bold">
+          <div className="w-fit rounded-md bg-fedex-orange p-2 font-bold text-white">
             Employee view
           </div>
         </Link>

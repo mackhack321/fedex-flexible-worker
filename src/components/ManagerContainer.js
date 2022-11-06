@@ -8,7 +8,7 @@ export default function ManagerContainer() {
     <div>
       <Navbar name="Thomas" pfp={thomas} />
       <main className="grid place-items-center">
-        <div className="w-full lg:w-2/3 3xl:w-1/3 px-10 lg:px-0">
+        <div className="w-full px-10 lg:w-2/3 lg:px-0 3xl:w-1/3">
           <Outlet />
         </div>
       </main>
