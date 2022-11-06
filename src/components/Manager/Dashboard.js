@@ -8,13 +8,25 @@ import { Link, useLocation } from "react-router-dom";
 export default function Dashboard() {
   const [searchText, setSearchText] = useState("");
   const [showCreateConfirmation, setShowCreateConfirmation] = useState(false);
+  const [showEditConfirmation, setShowEditConfirmation] = useState(false);
 
   const location = useLocation();
 
   useEffect(() => {
     const { newOpportunity } = location.state ?? false;
+    const { editedOpportunity } = location.state ?? false;
 
     if (newOpportunity) {
+      setShowCreateConfirmation(true);
+      const timer = setTimeout(() => {
+        setShowCreateConfirmation(false);
+        window.history.replaceState({}, document.title);
+      }, 5000);
+
+      return () => clearTimeout(timer);
+    }
+
+    if (editedOpportunity) {
       setShowCreateConfirmation(true);
       const timer = setTimeout(() => {
         setShowCreateConfirmation(false);
@@ -47,7 +59,7 @@ export default function Dashboard() {
           <div>
             <MagnifyingGlassIcon className="h-[24px] stroke-2" />
           </div>
-          <label htmlFor="search" hidden>
+          <label htmlFor="search" className="hidden">
             Search for an opportunity
           </label>
           <input
@@ -64,6 +76,12 @@ export default function Dashboard() {
         <div className="flex justify-center space-x-3 text-fedex-green">
           <CheckIcon className="w-[30px]" />
           <div className="text-xl">Opportunity published</div>
+        </div>
+      )}
+      {showEditConfirmation && (
+        <div className="flex justify-center space-x-3 text-fedex-green">
+          <CheckIcon className="w-[30px]" />
+          <div className="text-xl">Opportunity saved</div>
         </div>
       )}
       <div className="mt-9 mb-5 grid grid-cols-1 place-items-center gap-5 md:grid-cols-2">
