@@ -27,9 +27,9 @@ export default function Dashboard() {
     }
 
     if (editedOpportunity) {
-      setShowCreateConfirmation(true);
+      setShowEditConfirmation(true);
       const timer = setTimeout(() => {
-        setShowCreateConfirmation(false);
+        setShowEditConfirmation(false);
         window.history.replaceState({}, document.title);
       }, 5000);
 

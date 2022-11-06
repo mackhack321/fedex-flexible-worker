@@ -160,7 +160,6 @@ export default function OpportunityEdit() {
                   type="time"
                   name="start-time"
                   id="start-time"
-                  value={startTime}
                   onChange={(e) => setStartTime(e.target.value)}
                   className="w-full rounded-md bg-fedex-grey px-2 py-1"
                 />
@@ -248,7 +247,7 @@ export default function OpportunityEdit() {
                 type="submit"
                 className="w-[100px] rounded-md border-2 border-fedex-orange bg-fedex-orange px-2 py-1 text-center font-bold text-white"
               >
-                PUBLISH
+                SAVE
               </button>
             </div>
           </div>
