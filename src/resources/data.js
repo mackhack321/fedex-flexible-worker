@@ -74,6 +74,19 @@ const employeeMessages = [
 
 const managerMessages = [];
 
+const employeeProfile = {
+  firstname: "Bill",
+  lastname: "Snyder",
+  dob: "4/1/1960",
+  email: "bill@fedex.com",
+  phone: "(524) 555-3421",
+  location: "Tupelo, MS",
+  punctuality: "100%",
+  attendance: "97.5%",
+};
+
+const managerProfile = {};
+
 const repeatDayButtons = [
   {
     label: "S",
@@ -112,4 +125,6 @@ export {
   certifications,
   employeeMessages,
   managerMessages,
+  employeeProfile,
+  managerProfile,
 };
