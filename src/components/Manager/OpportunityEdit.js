@@ -8,6 +8,7 @@ import {
 import { MultiSelect } from "react-multi-select-component";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { opportunities } from "../../resources/data";
+import moment from "moment";
 
 export default function OpportunityEdit() {
   const [title, setTitle] = useState("");
@@ -59,6 +60,16 @@ export default function OpportunityEdit() {
     setAmtWorkersNeeded(match.numWorkersNeeded);
     setSupervisor(match.supervisor);
     setRepeatDays(match.repeat);
+    setSelectedTraining(
+      trainings.filter((training) =>
+        match.requiredTraining.includes(training.label)
+      )
+    );
+    setSelectedCertifications(
+      certifications.filter((certification) =>
+        match.requiredCertifications.includes(certification.label)
+      )
+    );
   }, [id]);
 
   return (
@@ -160,6 +171,7 @@ export default function OpportunityEdit() {
                   type="time"
                   name="start-time"
                   id="start-time"
+                  value={moment(startTime, ["h:ma"]).format("HH:mm")}
                   onChange={(e) => setStartTime(e.target.value)}
                   className="w-full rounded-md bg-fedex-grey px-2 py-1"
                 />
@@ -173,6 +185,7 @@ export default function OpportunityEdit() {
                   type="time"
                   name="end-time"
                   id="end-time"
+                  value={moment(endTime, ["h:ma"]).format("HH:mm")}
                   onChange={(e) => setEndTime(e.target.value)}
                   className="w-full rounded-md bg-fedex-grey px-2 py-1"
                 />
@@ -218,6 +231,7 @@ export default function OpportunityEdit() {
                 id="workers-needed"
                 onChange={(e) => setAmtWorkersNeeded(e.target.value)}
                 min={1}
+                value={amtWorkersNeeded}
                 className="w-full rounded-md bg-fedex-grey px-2 py-1 placeholder:text-sm placeholder:font-bold placeholder:text-fedex-placeholder"
                 placeholder="Leave blank for no limit"
               />
@@ -231,6 +245,7 @@ export default function OpportunityEdit() {
                 type="text"
                 name="supervisor"
                 id="supervisor"
+                value={supervisor}
                 onChange={(e) => setSupervisor(e.target.value)}
                 className="w-full rounded-md bg-fedex-grey px-2 py-1 placeholder:text-sm placeholder:font-bold placeholder:text-fedex-placeholder"
                 placeholder="Enter the opportunity's supervisor"
