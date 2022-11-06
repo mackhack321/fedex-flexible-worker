@@ -83,6 +83,20 @@ const employeeProfile = {
   location: "Tupelo, MS",
   punctuality: "100%",
   attendance: "97.5%",
+  completedTraining: [
+    "Road Safety",
+    "Driver's Education",
+    "Operations",
+    "Fleet Maintenance",
+    "Freight Handling",
+  ],
+  certifications: [
+    "Class A License",
+    "Commercial Driver's License (CDL) ",
+    "OSHA Safety Certificate",
+    "Operator Certification",
+    "Certified Logistics Associate",
+  ],
 };
 
 const managerProfile = {};

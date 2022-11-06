@@ -14,7 +14,7 @@ export default function Profile() {
       <h1 className="py-5 text-center text-4xl font-light">
         {profile.firstname}'s Profile
       </h1>
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
         <div className="flex flex-col space-y-3">
           <img
             src={user === "employee" ? employeePfp : managerPfp}
@@ -38,10 +38,35 @@ export default function Profile() {
             </a>
           </div>
           <div>Location: {profile.location}</div>
-          <div>Punctuality: {profile.punctuality}</div>
-          <div>Attendance: {profile.attendance}</div>
+          <div className="flex space-x-5 pt-5 text-xl">
+            <div className="font-bold">Punctuality</div>
+            <div>{profile.punctuality}</div>
+          </div>
+          <div className="flex space-x-5 text-xl">
+            <div className="font-bold">Attendance</div>
+            <div>{profile.attendance}</div>
+          </div>
         </div>
-        <div>bar</div>
+        <div>
+          <div>
+            <div className="mb-5 flex flex-col space-y-2">
+              <div className="text-2xl">Completed Training</div>
+              <div className="flex flex-col space-y-3 rounded-md bg-fedex-grey p-2">
+                {profile.completedTraining.map((training) => {
+                  return <div key={training}>{training}</div>;
+                })}
+              </div>
+            </div>
+            <div className="flex flex-col space-y-2">
+              <div className="text-2xl">Certifications</div>
+              <div className="flex flex-col space-y-3 rounded-md bg-fedex-grey p-2">
+                {profile.certifications.map((certification) => {
+                  return <div key={certification}>{certification}</div>;
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
         <div>baz</div>
       </div>
     </div>
