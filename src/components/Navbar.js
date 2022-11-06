@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "../resources/logo.png";
 import { EnvelopeIcon } from "@heroicons/react/24/outline";
+import { Link } from "react-router-dom";
 
 export default function Navbar(props) {
   return (
@@ -8,7 +9,9 @@ export default function Navbar(props) {
       <div className="h-full w-full self-center px-10 lg:w-2/3 lg:px-0 3xl:w-1/3">
         <div className="flex h-full items-center">
           <div>
-            <img src={logo} alt="FedEx logo" width={88} height={25.14} />
+            <Link to={`/${props.homepage}`}>
+              <img src={logo} alt="FedEx logo" width={88} height={25.14} />
+            </Link>
           </div>
           <div className="invisible ml-auto mr-5 text-white md:visible">
             Hello, {props.name}
