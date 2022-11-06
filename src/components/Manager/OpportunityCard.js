@@ -1,5 +1,6 @@
 import React from "react";
 import { ExclamationCircleIcon } from "@heroicons/react/24/outline";
+import { Link } from "react-router-dom";
 
 export default function OpportunityCard(props) {
   return (
@@ -32,7 +33,12 @@ export default function OpportunityCard(props) {
           Claimed: {props.opportunity.workersClaimed.length} out of{" "}
           {props.opportunity.numWorkersNeeded}
         </div>
-        <div className="text-fedex-blue">DETAILS</div>
+        <Link
+          to={`opportunity/${props.opportunity.id}`}
+          className="text-fedex-blue"
+        >
+          DETAILS
+        </Link>
       </div>
     </div>
   );

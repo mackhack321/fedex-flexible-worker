@@ -43,7 +43,7 @@ export default function Create() {
 
   return (
     <div>
-      <h1 className="py-5 text-center text-2xl font-light sm:text-4xl">
+      <h1 className="py-5 text-center text-4xl font-light">
         Create an Opportunity
       </h1>
       <form onSubmit={handleSubmit}>
@@ -119,6 +119,7 @@ export default function Create() {
                     onClick={() => handleRepeatDayClick(day.value)}
                     aria-label={day.value}
                     title={day.value}
+                    type="button"
                   >
                     {day.label}
                   </button>
