@@ -47,7 +47,7 @@ export default function Dashboard() {
       <div className="mb-5 flex flex-col justify-center space-y-5 md:flex-row md:space-y-0 md:space-x-3">
         <Link
           to="create"
-          className="w-fit rounded-md bg-fedex-orange px-2 py-1 text-center font-bold text-white"
+          className="w-fit rounded-md bg-fedex-orange py-2 px-4 text-center font-bold text-white md:px-2 md:py-1"
         >
           CREATE
         </Link>
