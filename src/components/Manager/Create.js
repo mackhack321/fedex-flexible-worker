@@ -38,7 +38,18 @@ export default function Create() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    navigate("/manager", { state: { newOpportunity: true } });
+    const payload = {
+      title: title,
+      description: description,
+      location: location,
+      date: date,
+      startTime: startTime,
+      endTime: endTime,
+      amtWorkersNeeded: amtWorkersNeeded,
+      supervisor: supervisor,
+    };
+
+    navigate("/manager", { state: { newOpportunity: true, payload: payload } });
   }
 
   return (
