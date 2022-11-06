@@ -55,7 +55,7 @@ export default function Dashboard() {
           <div>
             <MagnifyingGlassIcon className="h-[24px] stroke-2" />
           </div>
-          <label htmlFor="search" className="hidden">
+          <label htmlFor="search" className="sr-only">
             Search for an opportunity
           </label>
           <input
