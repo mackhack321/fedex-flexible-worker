@@ -11,6 +11,7 @@ import OpportunityEdit from "./components/Manager/OpportunityEdit";
 import ScrollToTop from "./components/ScrollToTop";
 import ClaimConfirm from "./components/Employee/ClaimConfirm";
 import Messages from "./components/Messages";
+import NewMessage from "./components/NewMessage";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
             />
             <Route path="opportunity/:id/edit" element={<OpportunityEdit />} />
             <Route path="messages" element={<Messages />} />
+            <Route path="messages/new" element={<NewMessage />} />
           </Route>
           {/*  =================
                 EMPLOYEE ROUTES
@@ -43,6 +45,7 @@ function App() {
             />
             <Route path="opportunity/:id/claim" element={<ClaimConfirm />} />
             <Route path="messages" element={<Messages />} />
+            <Route path="messages/new" element={<NewMessage />} />
           </Route>
         </Routes>
       </Router>

@@ -1,11 +1,29 @@
-import { TrashIcon } from "@heroicons/react/24/outline";
-import React from "react";
+import { TrashIcon, CheckIcon } from "@heroicons/react/24/outline";
+import React, { useState, useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { employeeMessages, managerMessages } from "../resources/data";
 
 export default function Messages() {
+  const [showSentConfirmation, setShowSentConfirmation] = useState(false);
+
   const location = useLocation();
   const user = location.pathname.split("/").at(1);
+
+  function showConfirmation(setter) {
+    setter(true);
+    const timer = setTimeout(() => {
+      setter(false);
+      window.history.replaceState({}, document.title);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }
+
+  useEffect(() => {
+    const { sentMessage } = location.state ?? false;
+
+    sentMessage && showConfirmation(setShowSentConfirmation);
+  }, [location.state]);
 
   return (
     <div>
@@ -18,6 +36,12 @@ export default function Messages() {
           NEW MESSAGE
         </Link>
       </div>
+      {showSentConfirmation && (
+        <div className="flex justify-center space-x-3 text-fedex-green">
+          <CheckIcon className="w-[30px]" />
+          <div className="text-xl">Message sent</div>
+        </div>
+      )}
       <div className="mb-5 flex flex-col justify-center space-y-5 pt-5">
         {(user === "employee" ? employeeMessages : managerMessages).map(
           (message) => (
