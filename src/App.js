@@ -34,7 +34,6 @@ function App() {
             <Route path="opportunity/:id/edit" element={<OpportunityEdit />} />
             <Route path="messages" element={<Messages />} />
             <Route path="messages/new" element={<NewMessage />} />
-            <Route path="profile" element={<Profile />} />
           </Route>
           {/*  =================
                 EMPLOYEE ROUTES

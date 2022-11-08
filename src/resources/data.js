@@ -99,8 +99,6 @@ const employeeProfile = {
   ],
 };
 
-const managerProfile = {};
-
 const repeatDayButtons = [
   {
     label: "S",
@@ -140,5 +138,4 @@ export {
   employeeMessages,
   managerMessages,
   employeeProfile,
-  managerProfile,
 };

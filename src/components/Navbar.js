@@ -25,13 +25,21 @@ export default function Navbar(props) {
             </Link>
           </div>
           <div>
-            <Link to="profile">
+            {props.homepage === "employee" ? (
+              <Link to="profile">
+                <img
+                  src={props.pfp}
+                  alt={`${props.name} profile`}
+                  className="h-[50px] w-[50px] rounded-full"
+                />
+              </Link>
+            ) : (
               <img
                 src={props.pfp}
-                alt={`${props.name} profile`}
+                alt={`${props.name}`}
                 className="h-[50px] w-[50px] rounded-full"
               />
-            </Link>
+            )}
           </div>
         </div>
       </div>
