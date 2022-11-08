@@ -13,6 +13,7 @@ import ClaimConfirm from "./components/Employee/ClaimConfirm";
 import Messages from "./components/Messages";
 import NewMessage from "./components/NewMessage";
 import Profile from "./components/Employee/Profile";
+import ClaimedOpportunities from "./components/Employee/ClaimedOpportunities";
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
             <Route path="messages" element={<Messages />} />
             <Route path="messages/new" element={<NewMessage />} />
             <Route path="profile" element={<Profile />} />
+            <Route path="profile/claimed" element={<ClaimedOpportunities />} />
           </Route>
         </Routes>
       </Router>
