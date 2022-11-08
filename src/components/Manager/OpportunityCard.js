@@ -35,7 +35,7 @@ export default function OpportunityCard(props) {
         </div>
         <Link
           to={`opportunity/${props.opportunity.id}`}
-          className="text-fedex-blue"
+          className="font-bold text-fedex-blue"
         >
           DETAILS
         </Link>

@@ -28,7 +28,7 @@ export default function OpportunityCard(props) {
       <div className="flex w-full justify-end">
         <Link
           to={`opportunity/${props.opportunity.id}`}
-          className="text-fedex-blue"
+          className="font-bold text-fedex-blue"
         >
           DETAILS
         </Link>
