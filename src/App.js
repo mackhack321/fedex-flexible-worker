@@ -12,7 +12,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import ClaimConfirm from "./components/Employee/ClaimConfirm";
 import Messages from "./components/Messages";
 import NewMessage from "./components/NewMessage";
-import Profile from "./components/Profile";
+import Profile from "./components/Employee/Profile";
 
 function App() {
   return (

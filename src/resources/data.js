@@ -97,6 +97,11 @@ const employeeProfile = {
     "Operator Certification",
     "Certified Logistics Associate",
   ],
+  previousWork: [
+    { title: "Driver", date: "10/2/2022", id: 1 },
+    { title: "Driver", date: "9/30/2022", id: 1 },
+    { title: "Driver", date: "9/28/2022", id: 1 },
+  ],
 };
 
 const repeatDayButtons = [

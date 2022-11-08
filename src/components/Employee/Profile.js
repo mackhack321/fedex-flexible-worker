@@ -1,12 +1,12 @@
 import React from "react";
-import { employeeProfile } from "../resources/data";
-import employeePfp from "../resources/bill-pfp.jpg";
+import { employeeProfile } from "../../resources/data";
+import employeePfp from "../../resources/bill-pfp.jpg";
 import { Link } from "react-router-dom";
 import { ChevronRightIcon } from "@heroicons/react/24/outline";
 
 export default function Profile() {
   return (
-    <div>
+    <div className="mb-5">
       <h1 className="py-5 text-center text-4xl font-light">
         {employeeProfile.firstname}'s Profile
       </h1>
@@ -69,14 +69,44 @@ export default function Profile() {
             </div>
           </div>
         </div>
-        <div>
+        <div className="flex flex-col space-y-10">
           <Link to="claimed">
             <div className="flex text-fedex-blue">
-              <div className="text-lg">SEE CLAIMED OPPORTUNITIES</div>
+              <div className="text-xl font-bold">
+                {employeeProfile.firstname.toUpperCase()}'S CLAIMED
+                OPPORTUNITIES
+              </div>
               <ChevronRightIcon className="w-[24px] stroke-2" />
             </div>
           </Link>
-          <div>previous work</div>
+          <div>
+            <div className="flex flex-col space-y-2">
+              <div className="text-2xl">Previous Work</div>
+              <div className="flex flex-col space-y-5">
+                {employeeProfile.previousWork.map((job) => {
+                  return (
+                    <div
+                      key={job.title + job.date}
+                      className="flex flex-col space-y-2 rounded-md bg-fedex-grey p-2"
+                    >
+                      <div className="flex justify-between">
+                        <div className="text-xl">{job.title}</div>
+                        <div className="text-lg">{job.date}</div>
+                      </div>
+                      <div className="flex w-full justify-end">
+                        <Link
+                          to={`/employee/opportunity/${job.id}`}
+                          className="font-bold text-fedex-blue"
+                        >
+                          DETAILS
+                        </Link>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
