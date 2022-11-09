@@ -71,8 +71,8 @@ export default function Profile() {
         </div>
         <div className="flex flex-col space-y-10">
           <Link to="claimed">
-            <div className="flex text-fedex-blue">
-              <div className="text-xl font-bold">
+            <div className="flex space-x-2 text-fedex-blue">
+              <div className="text-end text-xl font-bold">
                 {employeeProfile.firstname.toUpperCase()}'S CLAIMED
                 OPPORTUNITIES
               </div>
