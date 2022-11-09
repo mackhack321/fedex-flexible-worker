@@ -1,6 +1,6 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import EmployeeContainer from "./components/EmployeeContainer";
-import ManagerContainer from "./components/ManagerContainer";
+import EmployeeContainer from "./components/Employee/EmployeeContainer";
+import ManagerContainer from "./components/Manager/ManagerContainer";
 import Dashboard from "./components/Dashboard";
 import Launcher from "./components/Launcher";
 import Create from "./components/Manager/Create";
