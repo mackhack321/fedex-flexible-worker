@@ -1,21 +1,33 @@
 import React from "react";
 import { ExclamationCircleIcon } from "@heroicons/react/24/outline";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function OpportunityCard(props) {
+  const location = useLocation();
+  const user = location.pathname.split("/").at(1);
+
   return (
     <div className="w-fit rounded-md bg-fedex-grey p-5">
       <div className="flex justify-between">
         <div className="mb-2 text-3xl font-light">
           {props.opportunity.title}
         </div>
-        {props.opportunity.workersClaimed.length === 0 && (
-          <div className="mb-2 flex items-center space-x-1 text-sm font-bold text-fedex-red">
-            <div>
-              <ExclamationCircleIcon className="h-6 stroke-2" />
+        {user === "manager" ? (
+          props.opportunity.workersClaimed.length === 0 && (
+            <div className="mb-2 flex items-center space-x-1 text-sm font-bold text-fedex-red">
+              <div>
+                <ExclamationCircleIcon className="h-6 stroke-2" />
+              </div>
+              <div className="">UNCLAIMED</div>
             </div>
-            <div className="">UNCLAIMED</div>
-          </div>
+          )
+        ) : (
+          <Link
+            to={`opportunity/${props.opportunity.id}/claim`}
+            className="h-fit rounded-md border-2 border-fedex-orange bg-fedex-orange px-2 py-1 text-center font-bold text-white"
+          >
+            CLAIM
+          </Link>
         )}
       </div>
       <div className="mb-4 flex flex-col space-y-2 md:flex-row md:space-y-0">

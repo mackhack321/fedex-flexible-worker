@@ -5,7 +5,7 @@ import {
 } from "@heroicons/react/24/outline";
 import React, { useEffect } from "react";
 import { opportunities } from "../resources/data";
-import OpportunityCard from "./Manager/OpportunityCard";
+import OpportunityCard from "./OpportunityCard";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import moment from "moment/moment";
