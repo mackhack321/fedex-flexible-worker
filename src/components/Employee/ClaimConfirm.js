@@ -27,17 +27,17 @@ export default function ClaimConfirm() {
           {opportunity.startTime} - {opportunity.endTime}
         </div>
       </div>
-      <div className="flex justify-center space-x-6 pt-10">
+      <div className="flex flex-col justify-center space-y-10 space-y-reverse pt-10 md:flex-row md:space-y-0 md:space-x-6">
         <Link
           to={`/employee/opportunity/${opportunity.id}`}
-          className="w-[110px] rounded-md border-2 border-fedex-orange px-2 py-1 text-center font-bold text-fedex-orange"
+          className="mx-auto w-36 rounded-md border-2 border-fedex-orange px-2 py-1 text-center text-xl font-bold text-fedex-orange md:mx-0"
         >
           NO, CANCEL
         </Link>
         <Link
           to="/employee"
           state={{ unpublishedOpportunity: true }}
-          className="w-[110px] rounded-md border-2 border-fedex-orange bg-fedex-orange px-2 py-1 text-center font-bold text-white"
+          className="order-first mx-auto w-36 rounded-md border-2 border-fedex-orange bg-fedex-orange px-2 py-1 text-center text-xl font-bold text-white md:order-last md:mx-0"
         >
           YES, CLAIM
         </Link>

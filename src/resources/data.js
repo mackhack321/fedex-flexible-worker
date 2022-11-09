@@ -7,7 +7,8 @@ const opportunities = [
     date: "11/2/2022",
     startTime: "3:00p",
     endTime: "7:00p",
-    location: "Starkville, MS",
+    location: "Tupelo, MS",
+    mapUrl: "https://goo.gl/maps/ae1o1E1TkiU6CYB29",
     repeat: ["Sunday", "Wednesday"],
     numWorkersNeeded: 15,
     workersClaimed: [],
@@ -31,7 +32,8 @@ const opportunities = [
     date: "11/2/2022",
     startTime: "3:00p",
     endTime: "7:00p",
-    location: "Starkville, MS",
+    location: "Tupelo, MS",
+    mapUrl: "https://goo.gl/maps/ae1o1E1TkiU6CYB29",
     repeat: ["Sunday", "Wednesday"],
     numWorkersNeeded: 15,
     workersClaimed: [],
@@ -97,9 +99,18 @@ const employeeProfile = {
     "Operator Certification",
     "Certified Logistics Associate",
   ],
+  previousWork: [
+    { title: "Driver", date: "10/2/2022", id: 1 },
+    { title: "Driver", date: "9/30/2022", id: 1 },
+    { title: "Driver", date: "9/28/2022", id: 1 },
+  ],
+  claimedOpportunities: [
+    { title: "Driver", date: "12/11/2022", id: 1 },
+    { title: "Ramp Worker", date: "12/20/2022", id: 3 },
+    { title: "Cleanup", date: "12/30/2022", id: 4 },
+    { title: "Driver", date: "1/23/2023", id: 1 },
+  ],
 };
-
-const managerProfile = {};
 
 const repeatDayButtons = [
   {
@@ -140,5 +151,4 @@ export {
   employeeMessages,
   managerMessages,
   employeeProfile,
-  managerProfile,
 };
