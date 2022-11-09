@@ -8,6 +8,7 @@ import { opportunities } from "../../resources/data";
 import OpportunityCard from "./OpportunityCard";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import moment from "moment/moment";
 
 export default function Dashboard() {
   const [searchText, setSearchText] = useState("");
@@ -17,8 +18,8 @@ export default function Dashboard() {
     useState(false);
   const [showFilters, setShowFilters] = useState(false);
   const [filterLocation, setFilterLocation] = useState("");
-  const [filterStartDate, setFilterStartDate] = useState(new Date());
-  const [filterEndDate, setFilterEndDate] = useState(new Date());
+  const [filterStartDate, setFilterStartDate] = useState("");
+  const [filterEndDate, setFilterEndDate] = useState("");
   const [filterStartTime, setFilterStartTime] = useState("");
   const [filterEndTime, setFilterEndTime] = useState("");
   const [filterOnlyClaimed, setfilterOnlyClaimed] = useState(false);
@@ -50,21 +51,38 @@ export default function Dashboard() {
 
   function getMatchingOpportunities() {
     return opportunities.filter((opportunity) => {
-      let match = true;
-
       if (searchText) {
-        match = opportunity.title
-          .toLowerCase()
-          .includes(searchText.toLowerCase());
+        if (!opportunity.title.toLowerCase().includes(searchText.toLowerCase()))
+          return false;
       }
 
-      if (!showFilters) return match;
+      if (!showFilters) return true;
 
       if (filterLocation) {
-        match = opportunity.location === filterLocation;
+        if (opportunity.location !== filterLocation) return false;
       }
 
-      return match;
+      if (filterOnlyClaimed) {
+        if (opportunity.workersClaimed.length === 0) return false;
+      }
+
+      if (filterStartDate && filterEndDate) {
+        const jobDate = moment(opportunity.date, "MM/D/YYYY", true);
+        const startDate = moment(filterStartDate, "YYYY-MM-DD", true);
+        const endDate = moment(filterEndDate, "YYYY-MM-DD", true);
+
+        if (!jobDate.isBetween(startDate, endDate)) return false;
+      }
+
+      if (filterStartTime && filterEndTime) {
+        const jobStartTime = moment(opportunity.startTime, "h:mma");
+        const startTime = moment(filterStartTime, "HH:mm");
+        const endTime = moment(filterEndTime, "HH:mm");
+
+        if (!jobStartTime.isBetween(startTime, endTime)) return false;
+      }
+
+      return true;
     });
   }
 
@@ -154,6 +172,7 @@ export default function Dashboard() {
                 type="date"
                 name="startDate"
                 id="startDate"
+                onChange={(e) => setFilterStartDate(e.target.value)}
                 className="rounded-md bg-fedex-grey px-2 py-1"
               />
             </div>
@@ -164,6 +183,7 @@ export default function Dashboard() {
                 type="date"
                 name="endDate"
                 id="endDate"
+                onChange={(e) => setFilterEndDate(e.target.value)}
                 className="rounded-md bg-fedex-grey px-2 py-1"
               />
             </div>
@@ -177,6 +197,7 @@ export default function Dashboard() {
                 type="time"
                 name="startTime"
                 id="startTime"
+                onChange={(e) => setFilterStartTime(e.target.value)}
                 className="rounded-md bg-fedex-grey px-2 py-1"
               />
             </div>
@@ -187,13 +208,21 @@ export default function Dashboard() {
                 type="time"
                 name="endTime"
                 id="endTime"
+                onChange={(e) => setFilterEndTime(e.target.value)}
                 className="rounded-md bg-fedex-grey px-2 py-1"
               />
             </div>
           </div>
           <div className="mx-auto flex items-center space-x-2 md:mx-0">
-            <label htmlFor="onlyClaimed">Only Show Claimed Opportunities</label>
-            <input type="checkbox" name="onlyClaimed" id="onlyClaimed" />
+            <label htmlFor="onlyClaimed" className="text-end">
+              Only Show Claimed Opportunities
+            </label>
+            <input
+              type="checkbox"
+              name="onlyClaimed"
+              id="onlyClaimed"
+              onChange={(e) => setfilterOnlyClaimed(e.target.checked)}
+            />
           </div>
         </div>
       )}
