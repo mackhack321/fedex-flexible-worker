@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
-import { opportunities } from "../../resources/data";
+import { Link, useLocation, useParams } from "react-router-dom";
+import { opportunities } from "../resources/data";
 import { ChevronLeftIcon } from "@heroicons/react/24/outline";
 
 export default function OpportunityDetails() {
   const { id } = useParams();
   const [opportunity, setOpportunity] = useState({});
+
+  const location = useLocation();
+  const user = location.pathname.split("/").at(1);
 
   useEffect(() => {
     setOpportunity(
@@ -19,7 +22,7 @@ export default function OpportunityDetails() {
   return (
     <div>
       <div className="relative flex flex-row justify-center py-5">
-        <Link to="/manager" className="hidden md:block">
+        <Link to={`/${user}`} className="hidden md:block">
           <div className="absolute left-0 text-xl text-fedex-blue">
             <div className="flex flex-row space-x-2">
               <ChevronLeftIcon className="w-[22px] stroke-2" />
@@ -36,7 +39,14 @@ export default function OpportunityDetails() {
             <div>{opportunity.description}</div>
           </div>
           <div className="mb-5 flex flex-col space-y-2">
-            <div>{opportunity.location}</div>
+            <a
+              href={opportunity.mapUrl}
+              className="text-fedex-blue"
+              target={"_blank"}
+              rel={"noreferrer"}
+            >
+              {opportunity.location}
+            </a>
             <div>{opportunity.date}</div>
             <div>
               {opportunity.startTime} - {opportunity.endTime}
@@ -77,21 +87,32 @@ export default function OpportunityDetails() {
           <div className="mb-5">
             <div className="text-2xl">Supervisor: {opportunity.supervisor}</div>
           </div>
-          <div className="flex justify-end space-x-6">
-            <Link
-              to="edit"
-              className="w-[110px] rounded-md border-2 border-fedex-orange px-2 py-1 text-center font-bold text-fedex-orange"
-            >
-              EDIT
-            </Link>
-            <Link
-              to="/manager"
-              state={{ unpublishedOpportunity: true }}
-              className="w-[110px] rounded-md border-2 border-fedex-red bg-fedex-red px-2 py-1 text-center font-bold text-white"
-            >
-              UNPUBLISH
-            </Link>
-          </div>
+          {user === "manager" ? (
+            <div className="flex justify-end space-x-6">
+              <Link
+                to="edit"
+                className="w-[110px] rounded-md border-2 border-fedex-orange px-2 py-1 text-center font-bold text-fedex-orange"
+              >
+                EDIT
+              </Link>
+              <Link
+                to="/manager"
+                state={{ unpublishedOpportunity: true }}
+                className="w-[110px] rounded-md border-2 border-fedex-red bg-fedex-red px-2 py-1 text-center font-bold text-white"
+              >
+                UNPUBLISH
+              </Link>
+            </div>
+          ) : (
+            <div className="flex justify-end">
+              <Link
+                to="claim"
+                className="w-[110px] rounded-md border-2 border-fedex-orange bg-fedex-orange px-2 py-1 text-center font-bold text-white"
+              >
+                CLAIM
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>
