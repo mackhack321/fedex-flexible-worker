@@ -1,8 +1,7 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import EmployeeContainer from "./components/EmployeeContainer";
 import ManagerContainer from "./components/ManagerContainer";
-import { default as ManagerDashboard } from "./components/Manager/Dashboard";
-import { default as EmployeeDashboard } from "./components/Employee/Dashboard";
+import Dashboard from "./components/Dashboard";
 import Launcher from "./components/Launcher";
 import Create from "./components/Manager/Create";
 import { default as ManagerOpportunityDetails } from "./components/Manager/OpportunityDetails";
@@ -26,7 +25,7 @@ function App() {
                 MANAGER ROUTES
                ================*/}
           <Route path="manager" element={<ManagerContainer />}>
-            <Route index element={<ManagerDashboard />} />
+            <Route index element={<Dashboard />} />
             <Route path="create" element={<Create />} />
             <Route
               path="opportunity/:id"
@@ -40,7 +39,7 @@ function App() {
                 EMPLOYEE ROUTES
                =================*/}
           <Route path="employee" element={<EmployeeContainer />}>
-            <Route index element={<EmployeeDashboard />} />
+            <Route index element={<Dashboard />} />
             <Route
               path="opportunity/:id"
               element={<EmployeeOpportunityDetails />}

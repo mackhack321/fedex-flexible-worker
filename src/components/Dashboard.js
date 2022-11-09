@@ -4,8 +4,8 @@ import {
   FunnelIcon,
 } from "@heroicons/react/24/outline";
 import React, { useEffect } from "react";
-import { opportunities } from "../../resources/data";
-import OpportunityCard from "./OpportunityCard";
+import { opportunities } from "../resources/data";
+import OpportunityCard from "./Manager/OpportunityCard";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import moment from "moment/moment";
@@ -25,6 +25,7 @@ export default function Dashboard() {
   const [filterOnlyClaimed, setfilterOnlyClaimed] = useState(false);
 
   const location = useLocation();
+  const user = location.pathname.split("/").at(1);
 
   const allLocations = opportunities
     .map((opportunity) => opportunity.location)
@@ -92,12 +93,14 @@ export default function Dashboard() {
         Opportunities Dashboard
       </h1>
       <div className="mb-5 flex flex-col justify-center space-y-5 md:flex-row md:space-y-0 md:space-x-3">
-        <Link
-          to="create"
-          className="mx-auto w-fit rounded-md bg-fedex-orange py-2 px-4 text-center font-bold text-white md:mx-0 md:px-2 md:py-1"
-        >
-          CREATE
-        </Link>
+        {user === "manager" && (
+          <Link
+            to="create"
+            className="mx-auto w-fit rounded-md bg-fedex-orange py-2 px-4 text-center font-bold text-white md:mx-0 md:px-2 md:py-1"
+          >
+            CREATE
+          </Link>
+        )}
         <div className="flex justify-between space-x-3">
           <div className="flex w-full rounded-md bg-fedex-grey py-1 pl-3">
             <div>
@@ -213,17 +216,19 @@ export default function Dashboard() {
               />
             </div>
           </div>
-          <div className="mx-auto flex items-center space-x-2 md:mx-0">
-            <label htmlFor="onlyClaimed" className="text-end">
-              Only Show Claimed Opportunities
-            </label>
-            <input
-              type="checkbox"
-              name="onlyClaimed"
-              id="onlyClaimed"
-              onChange={(e) => setfilterOnlyClaimed(e.target.checked)}
-            />
-          </div>
+          {user === "manager" && (
+            <div className="mx-auto flex items-center space-x-2 md:mx-0">
+              <label htmlFor="onlyClaimed" className="text-end">
+                Only Show Claimed Opportunities
+              </label>
+              <input
+                type="checkbox"
+                name="onlyClaimed"
+                id="onlyClaimed"
+                onChange={(e) => setfilterOnlyClaimed(e.target.checked)}
+              />
+            </div>
+          )}
         </div>
       )}
       <div className="mt-9 mb-5 grid grid-cols-1 place-items-center gap-5 md:grid-cols-2">
