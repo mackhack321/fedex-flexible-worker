@@ -36,7 +36,14 @@ export default function OpportunityDetails() {
             <div>{opportunity.description}</div>
           </div>
           <div className="mb-5 flex flex-col space-y-2">
-            <div>{opportunity.location}</div>
+            <a
+              href={opportunity.mapUrl}
+              className="text-fedex-blue"
+              target={"_blank"}
+              rel={"noreferrer"}
+            >
+              {opportunity.location}
+            </a>
             <div>{opportunity.date}</div>
             <div>
               {opportunity.startTime} - {opportunity.endTime}
