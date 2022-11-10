@@ -35,8 +35,7 @@ export default function ClaimConfirm() {
           NO, CANCEL
         </Link>
         <Link
-          to="/employee"
-          state={{ unpublishedOpportunity: true }}
+          to="/employee/profile/claimed"
           className="order-first mx-auto w-36 rounded-md border-2 border-fedex-orange bg-fedex-orange px-2 py-1 text-center text-xl font-bold text-white md:order-last md:mx-0"
         >
           YES, CLAIM
