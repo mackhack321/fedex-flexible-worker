@@ -49,6 +49,54 @@ const opportunities = [
     ],
     supervisor: "Janet Overman",
   },
+  {
+    id: 3,
+    title: "Ramp Worker",
+    description: "Placeholder description. Needs to be updated.",
+    date: "12/20/2022",
+    startTime: "12:00p",
+    endTime: "7:00p",
+    location: "Tupelo, MS",
+    mapUrl: "https://goo.gl/maps/ae1o1E1TkiU6CYB29",
+    repeat: ["Sunday", "Wednesday"],
+    numWorkersNeeded: 15,
+    workersClaimed: ["bill"],
+    requiredTraining: [
+      "Road Safety",
+      "Driver's Education",
+      "Hazardous Material Transportation",
+      "Emergency Procedures",
+    ],
+    requiredCertifications: [
+      "Commercial Driver's License (CDL)",
+      "Freight Logistics Certificate",
+    ],
+    supervisor: "Janet Overman",
+  },
+  {
+    id: 4,
+    title: "Cleanup",
+    description: "Placeholder description. Needs to be updated.",
+    date: "12/30/2022",
+    startTime: "6:00p",
+    endTime: "10:00p",
+    location: "Tupelo, MS",
+    mapUrl: "https://goo.gl/maps/ae1o1E1TkiU6CYB29",
+    repeat: ["Sunday", "Wednesday"],
+    numWorkersNeeded: 15,
+    workersClaimed: ["bill"],
+    requiredTraining: [
+      "Road Safety",
+      "Driver's Education",
+      "Hazardous Material Transportation",
+      "Emergency Procedures",
+    ],
+    requiredCertifications: [
+      "Commercial Driver's License (CDL)",
+      "Freight Logistics Certificate",
+    ],
+    supervisor: "Janet Overman",
+  },
 ];
 
 const trainings = [
@@ -104,12 +152,7 @@ const employeeProfile = {
     { title: "Driver", date: "9/30/2022", id: 1 },
     { title: "Driver", date: "9/28/2022", id: 1 },
   ],
-  claimedOpportunities: [
-    { title: "Driver", date: "12/11/2022", id: 1 },
-    { title: "Ramp Worker", date: "12/20/2022", id: 3 },
-    { title: "Cleanup", date: "12/30/2022", id: 4 },
-    { title: "Driver", date: "1/23/2023", id: 1 },
-  ],
+  claimedOpportunities: [3, 4],
 };
 
 const repeatDayButtons = [

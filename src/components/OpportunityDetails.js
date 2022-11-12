@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
-import { opportunities } from "../resources/data";
+import { employeeProfile, opportunities } from "../resources/data";
 import { ChevronLeftIcon } from "@heroicons/react/24/outline";
 
 export default function OpportunityDetails() {
   const { id } = useParams();
   const [opportunity, setOpportunity] = useState({});
+  const [isClaimedByEmployee, setIsClaimedByEmployee] = useState(false);
 
   const location = useLocation();
   const user = location.pathname.split("/").at(1);
@@ -17,12 +18,23 @@ export default function OpportunityDetails() {
         return op.id === parseInt(id);
       })
     );
-  }, [id]);
+
+    setIsClaimedByEmployee(
+      employeeProfile.claimedOpportunities.includes(opportunity.id)
+    );
+  }, [id, opportunity.id]);
 
   return (
     <div>
       <div className="relative flex flex-row justify-center py-5">
-        <Link to={`/${user}`} className="hidden md:block">
+        <Link
+          to={
+            isClaimedByEmployee && user === "employee"
+              ? "/employee/profile/claimed"
+              : `/${user}`
+          }
+          className="hidden md:block"
+        >
           <div className="absolute left-0 text-xl text-fedex-blue">
             <div className="flex flex-row space-x-2">
               <ChevronLeftIcon className="w-[22px] stroke-2" />
@@ -58,13 +70,20 @@ export default function OpportunityDetails() {
           </div>
           <div className="mb-5 flex flex-col space-y-2">
             <div className="text-2xl">Claimants</div>
-            <div>
-              {opportunity.workersClaimed?.length === 0 ? (
-                <div>None</div>
-              ) : (
-                <div>{opportunity.workersClaimed?.join(", ")}</div>
-              )}
-            </div>
+            {user === "manager" ? (
+              <div>
+                {opportunity.workersClaimed?.length === 0 ? (
+                  <div>None</div>
+                ) : (
+                  <div>{opportunity.workersClaimed?.join(", ")}</div>
+                )}
+              </div>
+            ) : (
+              <div>
+                {opportunity.workersClaimed?.length} out of{" "}
+                {opportunity.numWorkersNeeded}
+              </div>
+            )}
           </div>
         </div>
         <div>
@@ -105,12 +124,14 @@ export default function OpportunityDetails() {
             </div>
           ) : (
             <div className="flex justify-end">
-              <Link
-                to="claim"
-                className="w-[110px] rounded-md border-2 border-fedex-orange bg-fedex-orange px-2 py-1 text-center font-bold text-white"
-              >
-                CLAIM
-              </Link>
+              {!isClaimedByEmployee && (
+                <Link
+                  to="claim"
+                  className="w-[110px] rounded-md border-2 border-fedex-orange bg-fedex-orange px-2 py-1 text-center font-bold text-white"
+                >
+                  CLAIM
+                </Link>
+              )}
             </div>
           )}
         </div>

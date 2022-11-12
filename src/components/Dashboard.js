@@ -7,6 +7,7 @@ import React, { useEffect } from "react";
 import { opportunities } from "../resources/data";
 import OpportunityCard from "./OpportunityCard";
 import { useState } from "react";
+import { employeeProfile } from "../resources/data";
 import { Link, useLocation } from "react-router-dom";
 import moment from "moment/moment";
 
@@ -52,6 +53,13 @@ export default function Dashboard() {
 
   function getMatchingOpportunities() {
     return opportunities.filter((opportunity) => {
+      if (
+        user === "employee" &&
+        employeeProfile.claimedOpportunities.includes(opportunity.id)
+      ) {
+        return false;
+      }
+
       if (searchText) {
         if (!opportunity.title.toLowerCase().includes(searchText.toLowerCase()))
           return false;
