@@ -42,15 +42,6 @@ export default function Dashboard() {
     return () => clearTimeout(timer);
   }
 
-  useEffect(() => {
-    const { newOpportunity, editedOpportunity, unpublishedOpportunity } =
-      location.state ?? false;
-
-    newOpportunity && showConfirmation(setShowCreateConfirmation);
-    editedOpportunity && showConfirmation(setShowEditConfirmation);
-    unpublishedOpportunity && showConfirmation(setShowUnpublishConfirmation);
-  }, [location.state]);
-
   function getMatchingOpportunities() {
     return opportunities.filter((opportunity) => {
       if (
@@ -94,6 +85,15 @@ export default function Dashboard() {
       return true;
     });
   }
+
+  useEffect(() => {
+    const { newOpportunity, editedOpportunity, unpublishedOpportunity } =
+      location.state ?? false;
+
+    newOpportunity && showConfirmation(setShowCreateConfirmation);
+    editedOpportunity && showConfirmation(setShowEditConfirmation);
+    unpublishedOpportunity && showConfirmation(setShowUnpublishConfirmation);
+  }, [location.state]);
 
   return (
     <div>
