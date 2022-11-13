@@ -2,8 +2,7 @@ const opportunities = [
   {
     id: 1,
     title: "Driver",
-    description:
-      "Drivers to deliver packages, handle transport, and other necessary functions.",
+    description: "Drivers to handle packages and freight transport.",
     date: "11/2/2022",
     startTime: "3:00p",
     endTime: "7:00p",
@@ -26,16 +25,15 @@ const opportunities = [
   },
   {
     id: 2,
-    title: "Driver",
-    description:
-      "Drivers to deliver packages, handle transport, and other necessary functions.",
-    date: "11/2/2022",
-    startTime: "3:00p",
-    endTime: "7:00p",
+    title: "Mystery Opportunity",
+    description: "Your duties will be explained upon arrival to the worksite.",
+    date: "11/18/2022",
+    startTime: "12:00p",
+    endTime: "5:00p",
     location: "Tupelo, MS",
     mapUrl: "https://goo.gl/maps/ae1o1E1TkiU6CYB29",
-    repeat: ["Sunday", "Wednesday"],
-    numWorkersNeeded: 15,
+    repeat: ["Sunday"],
+    numWorkersNeeded: 10,
     workersClaimed: [],
     requiredTraining: [
       "Road Safety",
@@ -100,6 +98,38 @@ const opportunities = [
     requiredCertifications: ["Freight Logistics Certificate"],
     supervisor: "Bryan Lee",
   },
+  {
+    id: 6,
+    title: "Floog Collector",
+    description: "Collects stray floog around the warehouse.",
+    date: "1/20/2023",
+    startTime: "6:00a",
+    endTime: "5:00p",
+    location: "Jackson, MS",
+    mapUrl: "https://goo.gl/maps/ae1o1E1TkiU6CYB29",
+    repeat: [],
+    numWorkersNeeded: 29,
+    workersClaimed: [],
+    requiredTraining: ["Floog Spotting"],
+    requiredCertifications: ["Floog Handler Certificate"],
+    supervisor: "Bryan Lee",
+  },
+  {
+    id: 7,
+    title: "Fleet Maintenance",
+    description: "Assist the maintenance team.",
+    date: "1/20/2023",
+    startTime: "12:00p",
+    endTime: "8:00p",
+    location: "Jackson, MS",
+    mapUrl: "https://goo.gl/maps/ae1o1E1TkiU6CYB29",
+    repeat: [],
+    numWorkersNeeded: 5,
+    workersClaimed: [],
+    requiredTraining: ["Fleet Maintenance", "Road Safety"],
+    requiredCertifications: ["OSHA Safety Certificate"],
+    supervisor: "Bryan Lee",
+  },
 ];
 
 const trainings = [
@@ -110,12 +140,16 @@ const trainings = [
   { label: "Ramp Logistics", value: "ramp_logistics" },
   { label: "Freight Handling", value: "freight_handling" },
   { label: "Package Handling", value: "package_handling" },
+  { label: "Floog Spotting", value: "floog_spotting" },
+  { label: "Fleet Maintenance", value: "fleet_maintenance" },
 ];
 
 const certifications = [
   { label: "Commercial Driver's License (CDL)", value: "cdl" },
   { label: "Freight Logistics Certificate", value: "freight_logistics" },
   { label: "Workspace Hygiene Certificate", value: "workspace_hygiene" },
+  { label: "Floog Handler Certificate", value: "floog_handler" },
+  { label: "OSHA Safety Certificate", value: "osha_safety" },
 ];
 
 const employeeMessages = [
@@ -150,13 +184,16 @@ const employeeProfile = {
     "Operations",
     "Fleet Maintenance",
     "Freight Handling",
+    "Hazardous Material Transportation",
+    "Emergency Procedures",
   ],
   certifications: [
-    "Class A License",
-    "Commercial Driver's License (CDL) ",
+    "Freight Logistics Certificate",
+    "Commercial Driver's License (CDL)",
     "OSHA Safety Certificate",
     "Operator Certification",
     "Certified Logistics Associate",
+    "Workspace Hygiene Certificate",
   ],
   previousWork: [
     { title: "Driver", date: "10/2/2022", id: 1 },
