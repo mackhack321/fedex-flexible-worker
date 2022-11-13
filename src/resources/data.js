@@ -22,7 +22,7 @@ const opportunities = [
       "Commercial Driver's License (CDL)",
       "Freight Logistics Certificate",
     ],
-    supervisor: "Janet Overman",
+    supervisor: "Jacques Baker",
   },
   {
     id: 2,
@@ -47,12 +47,12 @@ const opportunities = [
       "Commercial Driver's License (CDL)",
       "Freight Logistics Certificate",
     ],
-    supervisor: "Janet Overman",
+    supervisor: "Alice Shoemaker",
   },
   {
     id: 3,
     title: "Ramp Worker",
-    description: "Placeholder description. Needs to be updated.",
+    description: "Assists with ramp duties.",
     date: "12/20/2022",
     startTime: "12:00p",
     endTime: "7:00p",
@@ -61,22 +61,14 @@ const opportunities = [
     repeat: ["Sunday", "Wednesday"],
     numWorkersNeeded: 15,
     workersClaimed: ["bill"],
-    requiredTraining: [
-      "Road Safety",
-      "Driver's Education",
-      "Hazardous Material Transportation",
-      "Emergency Procedures",
-    ],
-    requiredCertifications: [
-      "Commercial Driver's License (CDL)",
-      "Freight Logistics Certificate",
-    ],
+    requiredTraining: ["Emergency Procedures"],
+    requiredCertifications: ["Freight Logistics Certificate"],
     supervisor: "Janet Overman",
   },
   {
     id: 4,
     title: "Cleanup",
-    description: "Placeholder description. Needs to be updated.",
+    description: "Provides assistance cleaning up warehouse.",
     date: "12/30/2022",
     startTime: "6:00p",
     endTime: "10:00p",
@@ -86,16 +78,27 @@ const opportunities = [
     numWorkersNeeded: 15,
     workersClaimed: ["bill"],
     requiredTraining: [
-      "Road Safety",
-      "Driver's Education",
       "Hazardous Material Transportation",
       "Emergency Procedures",
     ],
-    requiredCertifications: [
-      "Commercial Driver's License (CDL)",
-      "Freight Logistics Certificate",
-    ],
+    requiredCertifications: ["Workspace Hygiene Certificate"],
     supervisor: "Janet Overman",
+  },
+  {
+    id: 5,
+    title: "Package Handler",
+    description: "Handles packages.",
+    date: "1/14/2023",
+    startTime: "6:00a",
+    endTime: "5:00p",
+    location: "Jackson, MS",
+    mapUrl: "https://goo.gl/maps/ae1o1E1TkiU6CYB29",
+    repeat: [],
+    numWorkersNeeded: 1,
+    workersClaimed: [],
+    requiredTraining: ["Emergency Procedures", "Package Handling"],
+    requiredCertifications: ["Freight Logistics Certificate"],
+    supervisor: "Bryan Lee",
   },
 ];
 
@@ -106,11 +109,13 @@ const trainings = [
   { label: "Emergency Procedures", value: "emergency_procedures" },
   { label: "Ramp Logistics", value: "ramp_logistics" },
   { label: "Freight Handling", value: "freight_handling" },
+  { label: "Package Handling", value: "package_handling" },
 ];
 
 const certifications = [
   { label: "Commercial Driver's License (CDL)", value: "cdl" },
   { label: "Freight Logistics Certificate", value: "freight_logistics" },
+  { label: "Workspace Hygiene Certificate", value: "workspace_hygiene" },
 ];
 
 const employeeMessages = [
@@ -119,6 +124,12 @@ const employeeMessages = [
     from: "Sue Allen",
     date: "10/19/2022",
     teaser: "ALERT: Claimed opportunity details updated",
+  },
+  {
+    id: 2,
+    from: "Raj Subramaniam",
+    date: "10/10/2022",
+    teaser: "Big Bill, my man. Got another truck for you to drive.",
   },
 ];
 
