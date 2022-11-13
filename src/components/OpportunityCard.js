@@ -18,7 +18,7 @@ export default function OpportunityCard(props) {
               <div>
                 <ExclamationCircleIcon className="h-6 stroke-2" />
               </div>
-              <div className="">UNCLAIMED</div>
+              <div>UNCLAIMED</div>
             </div>
           )
         ) : (
