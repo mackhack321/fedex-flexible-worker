@@ -23,7 +23,7 @@ export default function Dashboard() {
   const [filterEndDate, setFilterEndDate] = useState("");
   const [filterStartTime, setFilterStartTime] = useState("");
   const [filterEndTime, setFilterEndTime] = useState("");
-  const [filterOnlyClaimed, setfilterOnlyClaimed] = useState(false);
+  const [filterOnlyClaimed, setFilterOnlyClaimed] = useState(false);
 
   const location = useLocation();
   const user = location.pathname.split("/").at(1);
@@ -42,22 +42,25 @@ export default function Dashboard() {
     return () => clearTimeout(timer);
   }
 
-  useEffect(() => {
-    const { newOpportunity, editedOpportunity, unpublishedOpportunity } =
-      location.state ?? false;
-
-    newOpportunity && showConfirmation(setShowCreateConfirmation);
-    editedOpportunity && showConfirmation(setShowEditConfirmation);
-    unpublishedOpportunity && showConfirmation(setShowUnpublishConfirmation);
-  }, [location.state]);
-
   function getMatchingOpportunities() {
     return opportunities.filter((opportunity) => {
-      if (
-        user === "employee" &&
-        employeeProfile.claimedOpportunities.includes(opportunity.id)
-      ) {
-        return false;
+      if (user === "employee") {
+        if (employeeProfile.claimedOpportunities.includes(opportunity.id))
+          return false;
+
+        if (
+          !opportunity.requiredTraining.every((training) =>
+            employeeProfile.completedTraining.includes(training)
+          )
+        )
+          return false;
+
+        if (
+          !opportunity.requiredCertifications.every((certification) =>
+            employeeProfile.certifications.includes(certification)
+          )
+        )
+          return false;
       }
 
       if (searchText) {
@@ -95,6 +98,33 @@ export default function Dashboard() {
     });
   }
 
+  // if toggling on filters, show filters and stop
+  // if turning them off, hide filters and also reset them
+  function handleFilterButtonClick() {
+    if (!showFilters) {
+      setShowFilters(true);
+      return;
+    }
+
+    setShowFilters(false);
+
+    setFilterLocation("");
+    setFilterStartDate("");
+    setFilterEndDate("");
+    setFilterStartTime("");
+    setFilterEndTime("");
+    setFilterOnlyClaimed(false);
+  }
+
+  useEffect(() => {
+    const { newOpportunity, editedOpportunity, unpublishedOpportunity } =
+      location.state ?? false;
+
+    newOpportunity && showConfirmation(setShowCreateConfirmation);
+    editedOpportunity && showConfirmation(setShowEditConfirmation);
+    unpublishedOpportunity && showConfirmation(setShowUnpublishConfirmation);
+  }, [location.state]);
+
   return (
     <div>
       <h1 className="py-5 text-center text-4xl font-light">
@@ -131,7 +161,7 @@ export default function Dashboard() {
             className={`flex items-center rounded-md p-1 ${
               showFilters ? "bg-fedex-lightblue" : "bg-fedex-grey"
             }`}
-            onClick={() => setShowFilters(!showFilters)}
+            onClick={() => handleFilterButtonClick()}
           >
             <FunnelIcon className="h-[24px] stroke-2" />
           </button>
@@ -177,7 +207,7 @@ export default function Dashboard() {
           <div className="mx-auto flex flex-col space-y-3 md:mx-0">
             <div className="text-center font-bold">Date Range</div>
             <div className="flex items-center space-x-2 md:justify-between">
-              <label htmlFor="startDate">Start Date</label>
+              <label htmlFor="startDate">From</label>
               <input
                 required
                 type="date"
@@ -188,7 +218,7 @@ export default function Dashboard() {
               />
             </div>
             <div className="flex items-center space-x-2 md:justify-between">
-              <label htmlFor="startDate">End Date</label>
+              <label htmlFor="startDate">To</label>
               <input
                 required
                 type="date"
@@ -202,7 +232,7 @@ export default function Dashboard() {
           <div className="mx-auto flex flex-col space-y-3 md:mx-0">
             <div className="text-center font-bold">Time Range</div>
             <div className="flex items-center space-x-2 md:justify-between">
-              <label htmlFor="startDate">Start Time</label>
+              <label htmlFor="startDate">From</label>
               <input
                 required
                 type="time"
@@ -213,7 +243,7 @@ export default function Dashboard() {
               />
             </div>
             <div className="flex items-center space-x-2 md:justify-between">
-              <label htmlFor="startDate">End Time</label>
+              <label htmlFor="startDate">To</label>
               <input
                 required
                 type="time"
@@ -233,7 +263,7 @@ export default function Dashboard() {
                 type="checkbox"
                 name="onlyClaimed"
                 id="onlyClaimed"
-                onChange={(e) => setfilterOnlyClaimed(e.target.checked)}
+                onChange={(e) => setFilterOnlyClaimed(e.target.checked)}
               />
             </div>
           )}

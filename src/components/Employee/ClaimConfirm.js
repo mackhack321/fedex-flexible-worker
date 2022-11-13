@@ -14,6 +14,7 @@ export default function ClaimConfirm() {
       })
     );
   }, [id]);
+
   return (
     <div className="flex flex-col space-y-5">
       <div className="mt-5 text-center text-4xl font-light">

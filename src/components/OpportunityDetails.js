@@ -63,7 +63,9 @@ export default function OpportunityDetails() {
             <div>
               {opportunity.startTime} - {opportunity.endTime}
             </div>
-            <div>Repeats every {opportunity.repeat?.join(", ")}</div>
+            {opportunity.repeat?.length > 0 && (
+              <div>Repeats every {opportunity.repeat?.join(", ")}</div>
+            )}
           </div>
           <div className="mb-9 flex flex-col space-y-2">
             <div>Accepting {opportunity.numWorkersNeeded} workers</div>
