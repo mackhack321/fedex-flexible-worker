@@ -23,7 +23,7 @@ export default function Dashboard() {
   const [filterEndDate, setFilterEndDate] = useState("");
   const [filterStartTime, setFilterStartTime] = useState("");
   const [filterEndTime, setFilterEndTime] = useState("");
-  const [filterOnlyClaimed, setfilterOnlyClaimed] = useState(false);
+  const [filterOnlyClaimed, setFilterOnlyClaimed] = useState(false);
 
   const location = useLocation();
   const user = location.pathname.split("/").at(1);
@@ -86,6 +86,24 @@ export default function Dashboard() {
     });
   }
 
+  // if toggling on filters, show filters and stop
+  // if turning them off, hide filters and also reset them
+  function handleFilterButtonClick() {
+    if (!showFilters) {
+      setShowFilters(true);
+      return;
+    }
+
+    setShowFilters(false);
+
+    setFilterLocation("");
+    setFilterStartDate("");
+    setFilterEndDate("");
+    setFilterStartTime("");
+    setFilterEndTime("");
+    setFilterOnlyClaimed(false);
+  }
+
   useEffect(() => {
     const { newOpportunity, editedOpportunity, unpublishedOpportunity } =
       location.state ?? false;
@@ -131,7 +149,7 @@ export default function Dashboard() {
             className={`flex items-center rounded-md p-1 ${
               showFilters ? "bg-fedex-lightblue" : "bg-fedex-grey"
             }`}
-            onClick={() => setShowFilters(!showFilters)}
+            onClick={() => handleFilterButtonClick()}
           >
             <FunnelIcon className="h-[24px] stroke-2" />
           </button>
@@ -233,7 +251,7 @@ export default function Dashboard() {
                 type="checkbox"
                 name="onlyClaimed"
                 id="onlyClaimed"
-                onChange={(e) => setfilterOnlyClaimed(e.target.checked)}
+                onChange={(e) => setFilterOnlyClaimed(e.target.checked)}
               />
             </div>
           )}
