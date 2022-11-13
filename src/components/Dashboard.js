@@ -177,7 +177,7 @@ export default function Dashboard() {
           <div className="mx-auto flex flex-col space-y-3 md:mx-0">
             <div className="text-center font-bold">Date Range</div>
             <div className="flex items-center space-x-2 md:justify-between">
-              <label htmlFor="startDate">Start Date</label>
+              <label htmlFor="startDate">From</label>
               <input
                 required
                 type="date"
@@ -188,7 +188,7 @@ export default function Dashboard() {
               />
             </div>
             <div className="flex items-center space-x-2 md:justify-between">
-              <label htmlFor="startDate">End Date</label>
+              <label htmlFor="startDate">To</label>
               <input
                 required
                 type="date"
@@ -202,7 +202,7 @@ export default function Dashboard() {
           <div className="mx-auto flex flex-col space-y-3 md:mx-0">
             <div className="text-center font-bold">Time Range</div>
             <div className="flex items-center space-x-2 md:justify-between">
-              <label htmlFor="startDate">Start Time</label>
+              <label htmlFor="startDate">From</label>
               <input
                 required
                 type="time"
@@ -213,7 +213,7 @@ export default function Dashboard() {
               />
             </div>
             <div className="flex items-center space-x-2 md:justify-between">
-              <label htmlFor="startDate">End Time</label>
+              <label htmlFor="startDate">To</label>
               <input
                 required
                 type="time"
