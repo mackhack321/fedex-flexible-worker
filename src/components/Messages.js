@@ -42,24 +42,27 @@ export default function Messages() {
           <div className="text-xl">Message sent</div>
         </div>
       )}
-      <div className="mb-5 flex flex-col justify-center space-y-5 pt-5">
-        {(user === "employee" ? employeeMessages : managerMessages).map(
-          (message) => (
-            <div
-              className="m-auto flex w-fit flex-row space-y-2 rounded-md bg-fedex-grey px-5 pb-3 pt-2"
-              key={message.id}
-            >
-              <div className="flex flex-col space-y-2">
-                <div className="flex flex-row justify-between">
-                  <div>{message.from}</div>
-                  <div>{message.date}</div>
+
+      <div className="grid place-items-center">
+        <div className="mb-5 flex flex-col justify-center space-y-5 pt-5 md:w-1/3">
+          {(user === "employee" ? employeeMessages : managerMessages).map(
+            (message) => (
+              <div
+                className="m-auto flex w-full flex-row space-y-2 rounded-md bg-fedex-grey px-5 pb-3 pt-2"
+                key={message.id}
+              >
+                <div className="flex flex-col space-y-2">
+                  <div className="flex flex-row justify-between">
+                    <div className="font-bold">{message.from}</div>
+                    <div>{message.date}</div>
+                  </div>
+                  <div>{message.teaser}</div>
                 </div>
-                <div>{message.teaser}</div>
+                <TrashIcon className="ml-auto w-12 text-fedex-red" />
               </div>
-              <TrashIcon className="ml-3 w-12 text-fedex-red" />
-            </div>
-          )
-        )}
+            )
+          )}
+        </div>
       </div>
       <div className="text-center font-bold">End of messages</div>
     </div>
