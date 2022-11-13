@@ -239,7 +239,7 @@ export default function Dashboard() {
           )}
         </div>
       )}
-      <div className="mt-9 mb-5 grid grid-cols-1 place-items-center gap-5 md:grid-cols-2">
+      <div className="mt-9 mb-5 grid grid-cols-1 gap-5 md:grid-cols-2">
         {getMatchingOpportunities().map((opportunity) => {
           return (
             <div key={opportunity.id}>
