@@ -4,7 +4,7 @@ CSE 4663 Human Computer Interaction
 
 MSU Fall 2022
 
-## Production build hosted at [fedex.mackstanley.com](https://fedex.mackstanley.com)
+## Production build hosted at [fedex.mackstanley.com](https://fedex.mackstanley.com) [![Netlify Status](https://api.netlify.com/api/v1/badges/91ada006-fd7e-4efd-a0ac-3f8a9ea91e9f/deploy-status)](https://app.netlify.com/sites/fedex-flexible-worker/deploys)
 
 ## Development setup
 
