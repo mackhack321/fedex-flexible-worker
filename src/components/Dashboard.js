@@ -44,11 +44,23 @@ export default function Dashboard() {
 
   function getMatchingOpportunities() {
     return opportunities.filter((opportunity) => {
-      if (
-        user === "employee" &&
-        employeeProfile.claimedOpportunities.includes(opportunity.id)
-      ) {
-        return false;
+      if (user === "employee") {
+        if (employeeProfile.claimedOpportunities.includes(opportunity.id))
+          return false;
+
+        if (
+          !opportunity.requiredTraining.every((training) =>
+            employeeProfile.completedTraining.includes(training)
+          )
+        )
+          return false;
+
+        if (
+          !opportunity.requiredCertifications.every((certification) =>
+            employeeProfile.certifications.includes(certification)
+          )
+        )
+          return false;
       }
 
       if (searchText) {
