@@ -133,7 +133,8 @@ const opportunities = [
   {
     id: 8,
     title: "Customer Service Agent",
-    description: "Answer incoming calls and answer customer questions and concerns.",
+    description:
+      "Answer incoming calls and answer customer questions and concerns.",
     date: "1/20/2023",
     startTime: "4:00p",
     endTime: "11:00p",
@@ -141,15 +142,16 @@ const opportunities = [
     mapUrl: "https://goo.gl/maps/ae1o1E1TkiU6CYB29",
     repeat: [],
     numWorkersNeeded: 4,
-    workersClaimed: [],
-    requiredTraining: ["Customer Service" , "Product Experience"],
+    workersClaimed: ["Bill Snyder"],
+    requiredTraining: ["Customer Service", "Product Experience"],
     requiredCertifications: ["CCSP Certification"],
     supervisor: "Bryan Lee",
   },
   {
     id: 9,
     title: "Customs intake",
-    description: "Work with customs officials on the intake of packages through borders.",
+    description:
+      "Work with customs officials on the intake of packages through borders.",
     date: "1/20/2023",
     startTime: "3:00p",
     endTime: "8:00p",
@@ -159,13 +161,17 @@ const opportunities = [
     numWorkersNeeded: 12,
     workersClaimed: [],
     requiredTraining: ["Customs Handling", "Package Handling"],
-    requiredCertifications: ["CBP Officer Certificate", "Freight Logistics Certificate"],
+    requiredCertifications: [
+      "CBP Officer Certificate",
+      "Freight Logistics Certificate",
+    ],
     supervisor: "Bryan Lee",
   },
   {
     id: 10,
     title: "Package Loader",
-    description: "Work in the warehouse loading packages weighing up to 50 lbs.",
+    description:
+      "Work in the warehouse loading packages weighing up to 50 lbs.",
     date: "1/20/2023",
     startTime: "2:00p",
     endTime: "11:00p",
@@ -175,7 +181,10 @@ const opportunities = [
     numWorkersNeeded: 2,
     workersClaimed: [],
     requiredTraining: ["Package Handling", "Freight Handling"],
-    requiredCertifications: ["OSHA Safety Certificate", "Freight Logistics Certificate"],
+    requiredCertifications: [
+      "OSHA Safety Certificate",
+      "Freight Logistics Certificate",
+    ],
     supervisor: "Bryan Lee",
   },
 ];
@@ -248,7 +257,6 @@ const employeeProfile = {
     "Customer Service",
     "Product Experience",
     "Customs Handling",
-
   ],
   certifications: [
     "Freight Logistics Certificate",
@@ -259,7 +267,6 @@ const employeeProfile = {
     "Workspace Hygiene Certificate",
     "CBP Officer Certificate",
     "CCSP Certification",
-
   ],
   previousWork: [
     { title: "Driver", date: "10/2/2022", id: 1 },
