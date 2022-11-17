@@ -93,6 +93,7 @@ export default function OpportunityEdit() {
                 onChange={(e) => setTitle(e.target.value)}
                 className="w-full rounded-md bg-fedex-grey px-2 py-1 placeholder:text-sm placeholder:font-bold placeholder:text-fedex-placeholder"
                 placeholder="Enter a title for the opportunity"
+                disabled={opportunity.workersClaimed?.length > 0}
               />
             </div>
             <div className="flex flex-col space-y-2">
@@ -107,6 +108,7 @@ export default function OpportunityEdit() {
                 onChange={(e) => setDescription(e.target.value)}
                 className="h-44 w-full rounded-md bg-fedex-grey px-2 py-1 placeholder:py-1 placeholder:text-sm placeholder:font-bold placeholder:text-fedex-placeholder"
                 placeholder="Enter a description for the opportunity"
+                disabled={opportunity.workersClaimed?.length > 0}
               />
             </div>
             <div className="flex flex-col space-y-2">
@@ -122,6 +124,7 @@ export default function OpportunityEdit() {
                 onChange={(e) => setLocation(e.target.value)}
                 className="w-full rounded-md bg-fedex-grey px-2 py-1 placeholder:text-sm placeholder:font-bold placeholder:text-fedex-placeholder"
                 placeholder="Enter the opportunity's location"
+                disabled={opportunity.workersClaimed?.length > 0}
               />
             </div>
             <div className="flex flex-col space-y-2">
@@ -138,6 +141,7 @@ export default function OpportunityEdit() {
                 min={new Date().toLocaleDateString("en-ca")}
                 className="w-full rounded-md bg-fedex-grey px-2 py-1"
                 placeholder="Select a date"
+                disabled={opportunity.workersClaimed?.length > 0}
               />
             </div>
             <div className="flex flex-col space-y-2">
@@ -174,6 +178,7 @@ export default function OpportunityEdit() {
                   value={moment(startTime, ["h:ma"]).format("HH:mm")}
                   onChange={(e) => setStartTime(e.target.value)}
                   className="w-full rounded-md bg-fedex-grey px-2 py-1"
+                  disabled={opportunity.workersClaimed?.length > 0}
                 />
               </div>
               <div className="flex flex-col space-y-2">
@@ -188,6 +193,7 @@ export default function OpportunityEdit() {
                   value={moment(endTime, ["h:ma"]).format("HH:mm")}
                   onChange={(e) => setEndTime(e.target.value)}
                   className="w-full rounded-md bg-fedex-grey px-2 py-1"
+                  disabled={opportunity.workersClaimed?.length > 0}
                 />
               </div>
             </div>
@@ -204,6 +210,7 @@ export default function OpportunityEdit() {
                   overrideStrings={{
                     selectSomeItems: "Select required trainings",
                   }}
+                  disabled={opportunity.workersClaimed?.length > 0}
                 />
               </div>
             </div>
@@ -218,6 +225,7 @@ export default function OpportunityEdit() {
                   overrideStrings={{
                     selectSomeItems: "Select required certifications",
                   }}
+                  disabled={opportunity.workersClaimed?.length > 0}
                 />
               </div>
             </div>
