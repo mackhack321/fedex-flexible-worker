@@ -1,10 +1,13 @@
 import React from "react";
 import { employeeProfile } from "../../resources/data";
 import employeePfp from "../../resources/bill-pfp.jpg";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ChevronRightIcon } from "@heroicons/react/24/outline";
 
 export default function Profile() {
+  const location = useLocation();
+  const user = location.pathname.split("/").at(1);
+
   return (
     <div className="mb-5">
       <h1 className="py-5 text-center text-4xl font-light">
@@ -95,7 +98,7 @@ export default function Profile() {
                       </div>
                       <div className="flex w-full justify-end">
                         <Link
-                          to={`/employee/opportunity/${job.id}`}
+                          to={`/${user}/opportunity/${job.id}`}
                           className="font-bold text-fedex-blue"
                         >
                           DETAILS
