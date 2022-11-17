@@ -130,6 +130,54 @@ const opportunities = [
     requiredCertifications: ["OSHA Safety Certificate"],
     supervisor: "Bryan Lee",
   },
+  {
+    id: 8,
+    title: "Customer Service Agent",
+    description: "Answer incoming calls and answer customer questions and concerns.",
+    date: "1/20/2023",
+    startTime: "4:00p",
+    endTime: "11:00p",
+    location: "Starkville, MS",
+    mapUrl: "https://goo.gl/maps/ae1o1E1TkiU6CYB29",
+    repeat: [],
+    numWorkersNeeded: 4,
+    workersClaimed: [],
+    requiredTraining: ["Customer Service" , "Product Experience"],
+    requiredCertifications: ["CCSP Certification"],
+    supervisor: "Bryan Lee",
+  },
+  {
+    id: 9,
+    title: "Customs intake",
+    description: "Work with customs officials on the intake of packages through borders.",
+    date: "1/20/2023",
+    startTime: "3:00p",
+    endTime: "8:00p",
+    location: "Laredo, TX",
+    mapUrl: "https://goo.gl/maps/ae1o1E1TkiU6CYB29",
+    repeat: [],
+    numWorkersNeeded: 12,
+    workersClaimed: [],
+    requiredTraining: ["Customs Handling", "Package Handling"],
+    requiredCertifications: ["CBP Officer Certificate", "Freight Logistics Certificate"],
+    supervisor: "Bryan Lee",
+  },
+  {
+    id: 10,
+    title: "Package Loader",
+    description: "Work in the warehouse loading packages weighing up to 50 lbs.",
+    date: "1/20/2023",
+    startTime: "2:00p",
+    endTime: "11:00p",
+    location: "Tupelo, MS",
+    mapUrl: "https://goo.gl/maps/ae1o1E1TkiU6CYB29",
+    repeat: [],
+    numWorkersNeeded: 2,
+    workersClaimed: [],
+    requiredTraining: ["Package Handling", "Freight Handling"],
+    requiredCertifications: ["OSHA Safety Certificate", "Freight Logistics Certificate"],
+    supervisor: "Bryan Lee",
+  },
 ];
 
 const trainings = [
@@ -142,6 +190,9 @@ const trainings = [
   { label: "Package Handling", value: "package_handling" },
   { label: "Floog Spotting", value: "floog_spotting" },
   { label: "Fleet Maintenance", value: "fleet_maintenance" },
+  { label: "Customer Service", value: "customer_service" },
+  { label: "Product Experience", value: "product_experience" },
+  { label: "Customs Handling", value: "customs_handling" },
 ];
 
 const certifications = [
@@ -150,6 +201,8 @@ const certifications = [
   { label: "Workspace Hygiene Certificate", value: "workspace_hygiene" },
   { label: "Floog Handler Certificate", value: "floog_handler" },
   { label: "OSHA Safety Certificate", value: "osha_safety" },
+  { label: "CBP Officer Certificate", value: "cbp_officer" },
+  { label: "CCSP Certification", value: "ccsp_certification" },
 ];
 
 const employeeMessages = [
@@ -164,6 +217,12 @@ const employeeMessages = [
     from: "Raj Subramaniam",
     date: "10/10/2022",
     teaser: "Big Bill, my man. Got another truck for you to drive.",
+  },
+  {
+    id: 3,
+    from: "Bob Snyder",
+    date: "10/10/2022",
+    teaser: "Brother Bill, I have a load of packages for you in the warehouse.",
   },
 ];
 
@@ -186,6 +245,10 @@ const employeeProfile = {
     "Freight Handling",
     "Hazardous Material Transportation",
     "Emergency Procedures",
+    "Customer Service",
+    "Product Experience",
+    "Customs Handling",
+
   ],
   certifications: [
     "Freight Logistics Certificate",
@@ -194,13 +257,16 @@ const employeeProfile = {
     "Operator Certification",
     "Certified Logistics Associate",
     "Workspace Hygiene Certificate",
+    "CBP Officer Certificate",
+    "CCSP Certification",
+
   ],
   previousWork: [
     { title: "Driver", date: "10/2/2022", id: 1 },
     { title: "Driver", date: "9/30/2022", id: 1 },
     { title: "Driver", date: "9/28/2022", id: 1 },
   ],
-  claimedOpportunities: [3, 4],
+  claimedOpportunities: [3, 4, 8],
 };
 
 const repeatDayButtons = [
