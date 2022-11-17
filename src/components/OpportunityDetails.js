@@ -83,7 +83,7 @@ export default function OpportunityDetails() {
                     {opportunity.workersClaimed?.map((emp) => (
                       <div key={emp}>
                         <Link
-                          to="/employee/profile"
+                          to="/manager/profile"
                           className="flex min-w-fit space-x-5 rounded-md bg-fedex-grey p-2 lg:w-2/3"
                         >
                           {emp === "Bill Snyder" ? (
