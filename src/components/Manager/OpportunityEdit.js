@@ -261,6 +261,7 @@ export default function OpportunityEdit() {
               <button
                 type="submit"
                 className="w-[100px] rounded-md border-2 border-fedex-orange bg-fedex-orange px-2 py-1 text-center font-bold text-white"
+                disabled={opportunity.workersClaimed?.length > 0}
               >
                 SAVE
               </button>
