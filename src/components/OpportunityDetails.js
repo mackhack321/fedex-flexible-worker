@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { employeeProfile, opportunities } from "../resources/data";
 import { ChevronLeftIcon } from "@heroicons/react/24/outline";
+import billPfp from "../resources/bill.jpg";
+import defaultPfp from "../resources/defaultPfp.png";
 
 export default function OpportunityDetails() {
   const { id } = useParams();
@@ -77,7 +79,31 @@ export default function OpportunityDetails() {
                 {opportunity.workersClaimed?.length === 0 ? (
                   <div>None</div>
                 ) : (
-                  <div>{opportunity.workersClaimed?.join(", ")}</div>
+                  <div className="flex flex-col space-y-5">
+                    {opportunity.workersClaimed?.map((emp) => (
+                      <div key={emp}>
+                        <Link
+                          to="/employee/profile"
+                          className="flex min-w-fit space-x-5 rounded-md bg-fedex-grey p-2 lg:w-2/3"
+                        >
+                          {emp === "Bill Snyder" ? (
+                            <img
+                              src={billPfp}
+                              alt="Bill Snyder headshot"
+                              className="h-[50px] w-[50px] rounded-full"
+                            />
+                          ) : (
+                            <img
+                              src={defaultPfp}
+                              alt="Default headshot"
+                              className="h-[50px] w-[50px] rounded-full"
+                            />
+                          )}
+                          <div className="my-auto">{emp}</div>
+                        </Link>
+                      </div>
+                    ))}
+                  </div>
                 )}
               </div>
             ) : (

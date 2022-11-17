@@ -58,7 +58,7 @@ const opportunities = [
     mapUrl: "https://goo.gl/maps/ae1o1E1TkiU6CYB29",
     repeat: ["Sunday", "Wednesday"],
     numWorkersNeeded: 15,
-    workersClaimed: ["bill"],
+    workersClaimed: ["Bill Snyder", "Mary Sue", "Paul Jones"],
     requiredTraining: ["Emergency Procedures"],
     requiredCertifications: ["Freight Logistics Certificate"],
     supervisor: "Janet Overman",
@@ -74,7 +74,7 @@ const opportunities = [
     mapUrl: "https://goo.gl/maps/ae1o1E1TkiU6CYB29",
     repeat: ["Sunday", "Wednesday"],
     numWorkersNeeded: 15,
-    workersClaimed: ["bill"],
+    workersClaimed: ["Bill Snyder"],
     requiredTraining: [
       "Hazardous Material Transportation",
       "Emergency Procedures",
