@@ -8,6 +8,7 @@ import {
 import { MultiSelect } from "react-multi-select-component";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { opportunities } from "../../resources/data";
+import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 import moment from "moment";
 
 export default function OpportunityEdit() {
@@ -80,6 +81,17 @@ export default function OpportunityEdit() {
       <h1 className="py-5 text-center text-4xl font-light">
         Editing "{opportunity.title}"
       </h1>
+      {isClaimed && (
+        <div className="flex flex-col justify-center pb-5 text-fedex-red md:flex-row md:space-x-3">
+          <div className="w-full md:w-fit">
+            <ExclamationTriangleIcon className="mx-auto w-[30px]" />
+          </div>
+          <div className="text-center text-xl">
+            Some fields are disabled because this opportunity has been claimed
+            by {opportunity.workersClaimed.length} worker(s).
+          </div>
+        </div>
+      )}
       <form onSubmit={handleSubmit}>
         <div className="mb-5 grid grid-cols-1 gap-5 md:mb-0 md:grid-cols-2 md:gap-24">
           <div className="flex flex-col space-y-5">
