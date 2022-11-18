@@ -61,12 +61,20 @@ export default function ClaimedOpportunities() {
               <div className="flex w-full items-center justify-center md:w-1/3">
                 <div className="flex space-x-24">
                   <div className="flex space-x-2">
-                    <input type="checkbox" name="email" id="email" />
-                    <label htmlFor="email">Email</label>
+                    <input
+                      type="checkbox"
+                      name={`email-${job.id}`}
+                      id={`email-${job.id}`}
+                    />
+                    <label htmlFor={`email-${job.id}`}>Email</label>
                   </div>
                   <div className="flex space-x-2">
-                    <input type="checkbox" name="sms" id="sms" />
-                    <label htmlFor="sms">SMS</label>
+                    <input
+                      type="checkbox"
+                      name={`sms-${job.id}`}
+                      id={`sms-${job.id}`}
+                    />
+                    <label htmlFor={`sms-${job.id}`}>SMS</label>
                   </div>
                 </div>
               </div>
