@@ -23,6 +23,7 @@ export default function OpportunityEdit() {
   const [selectedTraining, setSelectedTraining] = useState([]);
   const [selectedCertifications, setSelectedCertifications] = useState([]);
   const [opportunity, setOpportunity] = useState({});
+  const [isClaimed, setIsClaimed] = useState(false);
 
   const navigate = useNavigate();
   const { id } = useParams();
@@ -51,6 +52,8 @@ export default function OpportunityEdit() {
     });
 
     setOpportunity(match);
+    setIsClaimed(match.workersClaimed.length > 0);
+
     setTitle(match.title);
     setDescription(match.description);
     setLocation(match.location);
@@ -91,9 +94,9 @@ export default function OpportunityEdit() {
                 id="title"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className="w-full rounded-md bg-fedex-grey px-2 py-1 placeholder:text-sm placeholder:font-bold placeholder:text-fedex-placeholder"
+                className="w-full rounded-md bg-fedex-grey px-2 py-1 placeholder:text-sm placeholder:font-bold placeholder:text-fedex-placeholder disabled:bg-white"
                 placeholder="Enter a title for the opportunity"
-                disabled={opportunity.workersClaimed?.length > 0}
+                disabled={isClaimed}
               />
             </div>
             <div className="flex flex-col space-y-2">
@@ -106,9 +109,9 @@ export default function OpportunityEdit() {
                 id="description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                className="h-44 w-full rounded-md bg-fedex-grey px-2 py-1 placeholder:py-1 placeholder:text-sm placeholder:font-bold placeholder:text-fedex-placeholder"
+                className="h-44 w-full rounded-md bg-fedex-grey px-2 py-1 placeholder:py-1 placeholder:text-sm placeholder:font-bold placeholder:text-fedex-placeholder disabled:bg-white"
                 placeholder="Enter a description for the opportunity"
-                disabled={opportunity.workersClaimed?.length > 0}
+                disabled={isClaimed}
               />
             </div>
             <div className="flex flex-col space-y-2">
@@ -122,9 +125,9 @@ export default function OpportunityEdit() {
                 id="location"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
-                className="w-full rounded-md bg-fedex-grey px-2 py-1 placeholder:text-sm placeholder:font-bold placeholder:text-fedex-placeholder"
+                className="w-full rounded-md bg-fedex-grey px-2 py-1 placeholder:text-sm placeholder:font-bold placeholder:text-fedex-placeholder disabled:bg-white"
                 placeholder="Enter the opportunity's location"
-                disabled={opportunity.workersClaimed?.length > 0}
+                disabled={isClaimed}
               />
             </div>
             <div className="flex flex-col space-y-2">
@@ -139,9 +142,9 @@ export default function OpportunityEdit() {
                 value={new Date(date).toLocaleDateString("en-ca")}
                 onChange={(e) => setDate(e.target.value)}
                 min={new Date().toLocaleDateString("en-ca")}
-                className="w-full rounded-md bg-fedex-grey px-2 py-1"
+                className="w-full rounded-md bg-fedex-grey px-2 py-1 disabled:bg-white"
                 placeholder="Select a date"
-                disabled={opportunity.workersClaimed?.length > 0}
+                disabled={isClaimed}
               />
             </div>
             <div className="flex flex-col space-y-2">
@@ -152,13 +155,14 @@ export default function OpportunityEdit() {
                     className={`h-[30px] w-[30px] rounded-md p-1 text-center font-bold ${
                       repeatDays.includes(day.value)
                         ? "bg-fedex-lightblue"
-                        : "bg-fedex-grey"
+                        : "bg-fedex-grey disabled:bg-white"
                     }`}
                     key={day.value}
                     onClick={() => handleRepeatDayClick(day.value)}
                     aria-label={day.value}
                     title={day.value}
                     type="button"
+                    disabled={isClaimed}
                   >
                     {day.label}
                   </button>
@@ -177,8 +181,8 @@ export default function OpportunityEdit() {
                   id="start-time"
                   value={moment(startTime, ["h:ma"]).format("HH:mm")}
                   onChange={(e) => setStartTime(e.target.value)}
-                  className="w-full rounded-md bg-fedex-grey px-2 py-1"
-                  disabled={opportunity.workersClaimed?.length > 0}
+                  className="w-full rounded-md bg-fedex-grey px-2 py-1 disabled:bg-white"
+                  disabled={isClaimed}
                 />
               </div>
               <div className="flex flex-col space-y-2">
@@ -192,8 +196,8 @@ export default function OpportunityEdit() {
                   id="end-time"
                   value={moment(endTime, ["h:ma"]).format("HH:mm")}
                   onChange={(e) => setEndTime(e.target.value)}
-                  className="w-full rounded-md bg-fedex-grey px-2 py-1"
-                  disabled={opportunity.workersClaimed?.length > 0}
+                  className="w-full rounded-md bg-fedex-grey px-2 py-1 disabled:bg-white"
+                  disabled={isClaimed}
                 />
               </div>
             </div>
@@ -210,7 +214,7 @@ export default function OpportunityEdit() {
                   overrideStrings={{
                     selectSomeItems: "Select required trainings",
                   }}
-                  disabled={opportunity.workersClaimed?.length > 0}
+                  disabled={isClaimed}
                 />
               </div>
             </div>
@@ -225,7 +229,7 @@ export default function OpportunityEdit() {
                   overrideStrings={{
                     selectSomeItems: "Select required certifications",
                   }}
-                  disabled={opportunity.workersClaimed?.length > 0}
+                  disabled={isClaimed}
                 />
               </div>
             </div>
@@ -269,7 +273,6 @@ export default function OpportunityEdit() {
               <button
                 type="submit"
                 className="w-[100px] rounded-md border-2 border-fedex-orange bg-fedex-orange px-2 py-1 text-center font-bold text-white"
-                disabled={opportunity.workersClaimed?.length > 0}
               >
                 SAVE
               </button>
