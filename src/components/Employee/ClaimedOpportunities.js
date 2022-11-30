@@ -17,11 +17,11 @@ export default function ClaimedOpportunities() {
   return (
     <div className="mb-5">
       <div className="flex flex-col space-y-3 py-5 md:space-y-0">
-        <Link to={`/${user}/profile`}>
+        <Link to={`/${user}/profile`} className="w-fit">
           <div className="text-xl text-fedex-blue">
             <div className="flex flex-row space-x-2">
               <ChevronLeftIcon className="w-[22px] stroke-2" />
-              <div>Go back</div>
+              <div className="font-bold">Go back</div>
             </div>
           </div>
         </Link>
