@@ -2,7 +2,7 @@ import React from "react";
 import { employeeProfile } from "../../resources/data";
 import employeePfp from "../../resources/bill-pfp.jpg";
 import { Link, useLocation } from "react-router-dom";
-import { ChevronRightIcon } from "@heroicons/react/24/outline";
+import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/24/outline";
 
 export default function Profile() {
   const location = useLocation();
@@ -10,9 +10,19 @@ export default function Profile() {
 
   return (
     <div className="mb-5">
-      <h1 className="py-5 text-center text-4xl font-light">
-        {employeeProfile.firstname}'s Profile
-      </h1>
+      <div className="flex flex-col space-y-3 py-5 md:space-y-0">
+        <Link to={`/${user}`}>
+          <div className="text-xl text-fedex-blue">
+            <div className="flex flex-row space-x-2">
+              <ChevronLeftIcon className="w-[22px] stroke-2" />
+              <div>Go back</div>
+            </div>
+          </div>
+        </Link>
+        <h1 className="text-center text-4xl font-light">
+          {employeeProfile.firstname}'s Profile
+        </h1>
+      </div>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
         <div className="flex flex-col space-y-3">
           <img
