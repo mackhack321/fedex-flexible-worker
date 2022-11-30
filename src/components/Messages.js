@@ -1,4 +1,8 @@
-import { TrashIcon, CheckIcon } from "@heroicons/react/24/outline";
+import {
+  TrashIcon,
+  CheckIcon,
+  ChevronLeftIcon,
+} from "@heroicons/react/24/outline";
 import React, { useState, useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { employeeMessages, managerMessages } from "../resources/data";
@@ -27,7 +31,18 @@ export default function Messages() {
 
   return (
     <div>
-      <h1 className="py-5 text-center text-4xl font-light">Messages</h1>
+      <div className="flex flex-col space-y-3 py-5 md:space-y-0">
+        <Link to={`/${user}`}>
+          <div className="text-xl text-fedex-blue">
+            <div className="flex flex-row space-x-2">
+              <ChevronLeftIcon className="w-[22px] stroke-2" />
+              <div>Go back</div>
+            </div>
+          </div>
+        </Link>
+        <h1 className="text-center text-4xl font-light">Messages</h1>
+      </div>
+
       <div className="mb-5 flex flex-row justify-center">
         <Link
           to="new"

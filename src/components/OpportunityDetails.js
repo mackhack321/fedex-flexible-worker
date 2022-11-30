@@ -28,16 +28,15 @@ export default function OpportunityDetails() {
 
   return (
     <div>
-      <div className="relative flex flex-row justify-center py-5">
+      <div className="flex flex-col space-y-3 py-5 md:space-y-0">
         <Link
           to={
             isClaimedByEmployee && user === "employee"
               ? "/employee/profile/claimed"
               : `/${user}`
           }
-          className="hidden md:block"
         >
-          <div className="absolute left-0 text-xl text-fedex-blue">
+          <div className="text-xl text-fedex-blue">
             <div className="flex flex-row space-x-2">
               <ChevronLeftIcon className="w-[22px] stroke-2" />
               <div>Go back</div>
@@ -84,6 +83,7 @@ export default function OpportunityDetails() {
                       <div key={emp}>
                         <Link
                           to="/manager/profile"
+                          state={{ id: opportunity.id }}
                           className="flex min-w-fit space-x-5 rounded-md bg-fedex-grey p-2 lg:w-2/3"
                         >
                           {emp === "Bill Snyder" ? (

@@ -16,9 +16,9 @@ export default function ClaimedOpportunities() {
 
   return (
     <div className="mb-5">
-      <div className="relative flex flex-row justify-center py-5">
-        <Link to={`/${user}/profile`} className="hidden md:block">
-          <div className="absolute left-0 text-xl text-fedex-blue">
+      <div className="flex flex-col space-y-3 py-5 md:space-y-0">
+        <Link to={`/${user}/profile`}>
+          <div className="text-xl text-fedex-blue">
             <div className="flex flex-row space-x-2">
               <ChevronLeftIcon className="w-[22px] stroke-2" />
               <div>Go back</div>

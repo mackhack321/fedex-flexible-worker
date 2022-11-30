@@ -12,6 +12,7 @@ import Messages from "./components/Messages";
 import NewMessage from "./components/NewMessage";
 import Profile from "./components/Employee/Profile";
 import ClaimedOpportunities from "./components/Employee/ClaimedOpportunities";
+import PageNotFound from "./components/PageNotFound";
 
 function App() {
   return (
@@ -45,6 +46,8 @@ function App() {
             <Route path="profile" element={<Profile />} />
             <Route path="profile/claimed" element={<ClaimedOpportunities />} />
           </Route>
+
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Router>
     </div>
