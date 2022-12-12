@@ -35,11 +35,12 @@ export default function OpportunityDetails() {
               ? "/employee/profile/claimed"
               : `/${user}`
           }
+          className="w-fit"
         >
           <div className="text-xl text-fedex-blue">
             <div className="flex flex-row space-x-2">
               <ChevronLeftIcon className="w-[22px] stroke-2" />
-              <div>Go back</div>
+              <div className="font-bold">Go back</div>
             </div>
           </div>
         </Link>

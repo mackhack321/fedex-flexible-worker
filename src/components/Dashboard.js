@@ -108,6 +108,10 @@ export default function Dashboard() {
 
     setShowFilters(false);
 
+    resetFilters();
+  }
+
+  function resetFilters() {
     setFilterLocation("");
     setFilterStartDate("");
     setFilterEndDate("");
@@ -192,8 +196,8 @@ export default function Dashboard() {
             <select
               name="location"
               id="location"
-              defaultValue={"default"}
               className="rounded-md bg-fedex-grey px-2 py-1"
+              value={filterLocation}
               onChange={(e) => setFilterLocation(e.target.value)}
             >
               <option value="">Select a location</option>
@@ -213,6 +217,7 @@ export default function Dashboard() {
                 type="date"
                 name="startDate"
                 id="startDate"
+                value={filterStartDate}
                 onChange={(e) => setFilterStartDate(e.target.value)}
                 className="rounded-md bg-fedex-grey px-2 py-1"
               />
@@ -224,6 +229,7 @@ export default function Dashboard() {
                 type="date"
                 name="endDate"
                 id="endDate"
+                value={filterEndDate}
                 onChange={(e) => setFilterEndDate(e.target.value)}
                 className="rounded-md bg-fedex-grey px-2 py-1"
               />
@@ -238,6 +244,7 @@ export default function Dashboard() {
                 type="time"
                 name="startTime"
                 id="startTime"
+                value={filterStartTime}
                 onChange={(e) => setFilterStartTime(e.target.value)}
                 className="rounded-md bg-fedex-grey px-2 py-1"
               />
@@ -249,24 +256,34 @@ export default function Dashboard() {
                 type="time"
                 name="endTime"
                 id="endTime"
+                value={filterEndTime}
                 onChange={(e) => setFilterEndTime(e.target.value)}
                 className="rounded-md bg-fedex-grey px-2 py-1"
               />
             </div>
           </div>
-          {user === "manager" && (
-            <div className="mx-auto flex items-center space-x-2 md:mx-0">
-              <label htmlFor="onlyClaimed" className="text-end">
-                Only Show Claimed Opportunities
-              </label>
-              <input
-                type="checkbox"
-                name="onlyClaimed"
-                id="onlyClaimed"
-                onChange={(e) => setFilterOnlyClaimed(e.target.checked)}
-              />
-            </div>
-          )}
+          <div className="flex flex-col items-center justify-center">
+            {user === "manager" && (
+              <div className="mx-auto mb-3 flex items-center space-x-2 md:mx-0">
+                <label htmlFor="onlyClaimed" className="text-end">
+                  Only Show Claimed Opportunities
+                </label>
+                <input
+                  type="checkbox"
+                  name="onlyClaimed"
+                  id="onlyClaimed"
+                  checked={filterOnlyClaimed}
+                  onChange={(e) => setFilterOnlyClaimed(e.target.checked)}
+                />
+              </div>
+            )}
+            <button
+              className="rounded-md bg-fedex-orange py-2 px-4 text-center font-bold text-white md:mx-0 md:px-2 md:py-1"
+              onClick={() => resetFilters()}
+            >
+              RESET
+            </button>
+          </div>
         </div>
       )}
       <div className="mt-9 mb-5 grid grid-cols-1 gap-5 md:grid-cols-2">
